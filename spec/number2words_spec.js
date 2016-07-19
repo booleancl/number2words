@@ -61,10 +61,10 @@ function libDescription(){
         expect(function(){
           converterToWords.convert(value);
         }).toThrow();
-      })
+      });
     }
     
-  } 
+  }
   describe('Números del 0 al 9', description1);
   function description1(){
     
@@ -179,6 +179,6 @@ function libDescription(){
       possitiveAssertionsArr = [132131,999999];
       expectationsArr = ['ciento treinta y dos mil ciento treinta y uno','novecientos noventa y nueve mil novecientos noventa y nueve'];
       runningArrayExpectations(expectationsArr, possitiveAssertionsArr);
-    } 
+    }
   }
 }
