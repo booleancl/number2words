@@ -3,6 +3,6 @@ sudo: false
 node_js:
   - 0.10
 script: 
-  - npm test
+  - jasmine-node spec/ --color --verbose
 before_script:
   - npm install
