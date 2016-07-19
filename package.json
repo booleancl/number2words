@@ -1,0 +1,27 @@
+{
+  "name": "number2words",
+  "version": "0.1.0",
+  "description": "A library to convert a number input in words. Support multiple languages.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jasmine-node spec/ --autotest --color --verbose"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gpincheiraa/number2words.git"
+  },
+  "keywords": [
+    "convert",
+    "words",
+    "number"
+  ],
+  "author": "Gonzalo Pincheira Arancibia",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gpincheiraa/number2words/issues"
+  },
+  "homepage": "https://github.com/gpincheiraa/number2words#readme",
+  "devDependencies": {
+    "jasmine-node": "^1.14.5"
+  }
+}
