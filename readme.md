@@ -8,7 +8,6 @@
 
 [![Build Status][travis-image]][travis-url] [![Code Climate][codeclimate-image]][codeclimate-url]
 
-
 A library to convert a number input in words. Support multiple languages.
 
 Requirements:
@@ -19,3 +18,10 @@ Requirements:
 - cd number2words
 - npm install
 - npm test
+
+## to do features:
+- Languages exportable module for global configuration.
+- Adding more gramatically-cases test.
+- Adding a more solid testing suite.
+- create a dockerfile
+- Add nodeinspector

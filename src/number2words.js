@@ -1,10 +1,8 @@
 var numerals,
     LANGUAGES;
-
 LANGUAGES = {
   SPANISH: 'es'
 };
-
 //SPANISH SOURCE
 //SOURCE: http://www.reglasdeortografia.com/numerales.html
 //        http://hispanoteca.eu/Foro-preguntas/ARCHIVO-Foro/Numerales%20uno-una%20-%20formas%20apocopadas.htm
@@ -24,47 +22,58 @@ numerals = {
     '21': 'veintiún',
    }
 };
-
 //The library
 module.exports = ConverterToWords;
-
 function ConverterToWords(){
   var self = this;
 }
-
 ConverterToWords.prototype.setLanguage = function(languageKey){
   this.language = LANGUAGES[''+languageKey];
 };
-
 ConverterToWords.prototype.isValidFormat = function(number){
   if(/^(?!0)(?:\d+|\d{1,3}(?:\.\d{3})+)$|^0$/.test(number)){
     return true;
   }
   throw 'Provide an entire in a valid format';
 };
-
 ConverterToWords.prototype.getSpecial = function(number){
   
   var specialNumber;
+
   
   switch(number){
     case 21:
-      specialNumber = numerals['apocopados']['21'];
+      specialNumber = numerals['apocopados']['21']; //veintiún
       break;
     case 31:
-      specialNumber = numerals['30-90'][0] + ' ' + numerals['apocopados']['1'][0];
+    case 41:
+    case 51:
+    case 61:
+    case 71:
+    case 81:
+    case 91:
+      specialNumber = numerals['30-90'][parseInt(number/10,10) - 3] + ' ' + numerals['apocopados']['1'][0]; //y un
       break;
-    case 121:
-      specialNumber = 'ciento '+ numerals['apocopados']['21'];
+    case 121:         //ciento                        //veintiún
+      specialNumber = numerals['100-900'][1] + ' '  + numerals['apocopados']['21'];
       break;
+    case 101:
     case 201:
-      specialNumber = numerals['100-900'][2] + ' ' + numerals['apocopados']['1'][1];
+    case 301:
+    case 401:
+    case 501:
+    case 601:
+    case 701:
+    case 801:
+    case 901:
+      specialNumber = numerals['100-900'][parseInt(number/100,10)] + ' ' + numerals['apocopados']['1'][1]; //un
       break;
   }
-  
   return specialNumber;
 };
-
+/* Think about this when you refactoring the function convert
+    http://stackoverflow.com/questions/32347732/efficiency-vs-legibility-of-code
+*/
 ConverterToWords.prototype.convert = function(number){
   var result;
   //Valid format
@@ -105,11 +114,11 @@ ConverterToWords.prototype.convert = function(number){
     }
     else{
       var isThousandsMultiple = (number/1000)%1 === 0,
-          thousandsDivisionInt = parseInt(number/1000,10);
-      
+        thousandsDivisionInt = parseInt(number/1000,10),
+        specialNumbers = [101,201,301,401,501,601,701,801,901,121,21,31,41,51,61,71,81,91];
       //recursive call
-      result  = [201,121,21,31].indexOf(thousandsDivisionInt) !== -1 ? this.getSpecial(thousandsDivisionInt)
-                                                                     : this.convert(thousandsDivisionInt);
+      result  = specialNumbers.indexOf(thousandsDivisionInt) !== -1 ? this.getSpecial(thousandsDivisionInt)
+                                                                    : this.convert(thousandsDivisionInt);
       if(isThousandsMultiple){
         result += ' ' + numerals['1000'];
       }
@@ -121,6 +130,5 @@ ConverterToWords.prototype.convert = function(number){
       
     }
   }
-  
   return result;
 };
