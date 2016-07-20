@@ -10,3 +10,12 @@
 
 
 A library to convert a number input in words. Support multiple languages.
+
+Requirements:
+- node
+
+## Contribute
+- git clone https://github.com/gpincheiraa/number2words.git
+- cd number2words
+- npm install
+- npm test
