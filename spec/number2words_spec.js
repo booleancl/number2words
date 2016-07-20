@@ -183,5 +183,11 @@ function libDescription(){
       expectationsArr = ['ciento treinta y dos mil ciento treinta y uno','novecientos noventa y nueve mil novecientos noventa y nueve'];
       runningArrayExpectations(expectationsArr, possitiveAssertionsArr);
     }
+    it('7. Debería convertir números desde el 1.000.000 al 9.000.000, ',spec7);
+    function spec7(){
+      possitiveAssertionsArr = [1000000,2000000,3000000,4000000,5000000,6000000,7000000,8000000,9000000];
+      expectationsArr = ['un millón','dos millones','tres millones','cuatro millones','cinco millones','seis millones','siete millones','ocho millones','nueve millones'];
+      runningArrayExpectations(expectationsArr, possitiveAssertionsArr);
+    }
   }
 }
