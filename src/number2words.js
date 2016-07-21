@@ -114,7 +114,7 @@ ConverterToWords.prototype.convert = function(number){
     }
     else{
       var isThousandsMultiple = (number/1000)%1 === 0,
-        thousandsDivisionInt = parseInt(number/1000,10),
+        thousandsDivisionInt = parseInt(number/1000, 10),
         specialNumbers = [101,201,301,401,501,601,701,801,901,121,21,31,41,51,61,71,81,91];
       //recursive call
       result  = specialNumbers.indexOf(thousandsDivisionInt) !== -1 ? this.getSpecial(thousandsDivisionInt)
@@ -130,5 +130,17 @@ ConverterToWords.prototype.convert = function(number){
       
     }
   }
+  else if(number >= 1000000 && number <= 999999999){
+    var millionDivisionInt = parseInt(number/1000000, 10);
+
+    if(number === 1000000){
+      result = numerals['apocopados']['1'][1] + ' ' + numerals['1000000'][0];
+    }
+    else{
+      result = this.convert(millionDivisionInt) + ' ' + numerals['1000000'][1];
+    }
+  }
+
+
   return result;
 };
