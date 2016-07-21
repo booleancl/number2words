@@ -183,11 +183,25 @@ function libDescription(){
       expectationsArr = ['ciento treinta y dos mil ciento treinta y uno','novecientos noventa y nueve mil novecientos noventa y nueve'];
       runningArrayExpectations(expectationsArr, possitiveAssertionsArr);
     }
-    it('7. Debería convertir números desde el 1.000.000 al 9.000.000, ',spec7);
-    function spec7(){
+  }
+  
+  describe('Números del 1.000.000 al 9.999.999',description7);
+  function description7(){
+    it('1. Debería convertir los múltiplos de 1.000.000 hasta el 9.000.000 de 1 o dos palabras, ',spec1);
+    function spec1(){
       possitiveAssertionsArr = [1000000,2000000,3000000,4000000,5000000,6000000,7000000,8000000,9000000];
       expectationsArr = ['un millón','dos millones','tres millones','cuatro millones','cinco millones','seis millones','siete millones','ocho millones','nueve millones'];
       runningArrayExpectations(expectationsArr, possitiveAssertionsArr);
+    }
+    
+    it('2. Debería convertir los números repetidos',spec2);
+    function spec2(){
+      possitiveAssertionsArr = [1111111,2222222,3333333,4444444,555555,6666666,7777777,8888888,9999999];
+      expectationsArr = ['un millón ciento once mil ciento once','dos millones doscientos veintidós mil doscientos veintidós','tres millones trescientos treinta y tres mil trescientos treinta y tres',
+      'cuatro millones cuatrocientos cuarenta y cuatro mil cuatrocientos cuarenta y cuatro','cinco millones quinientos cincuenta y cinco mil quinientos cincuenta y cinco',
+      'seis millones seiscientos sesenta y seis mil seiscientos sesenta y seis','siete millones setecientos setenta y siete mil setecientos setenta y siete',
+      'ocho millones ochocientos ochenta y ocho mil ochocientos ochenta y ocho','nueve millones novecientos noventa y nueve mil novecientos noventa y nueve',];
+      runningArrayExpectations(expectationsArr,possitiveAssertionsArr);
     }
   }
 }
