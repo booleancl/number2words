@@ -75,7 +75,8 @@ ConverterToWords.prototype.getSpecial = function(number){
     http://stackoverflow.com/questions/32347732/efficiency-vs-legibility-of-code
 */
 ConverterToWords.prototype.convert = function(number){
-  var result;
+  var result,
+      specialNumbers = [101,201,301,401,501,601,701,801,901,121,21,31,41,51,61,71,81,91];
   //Valid format
   if(this.isValidFormat(number)){
     number = parseInt(('' + number).replace(/\./g,''), 10);
@@ -114,8 +115,8 @@ ConverterToWords.prototype.convert = function(number){
     }
     else{
       var isThousandsMultiple = (number/1000)%1 === 0,
-        thousandsDivisionInt = parseInt(number/1000, 10),
-        specialNumbers = [101,201,301,401,501,601,701,801,901,121,21,31,41,51,61,71,81,91];
+        thousandsDivisionInt = parseInt(number/1000, 10);
+      
       //recursive call
       result  = specialNumbers.indexOf(thousandsDivisionInt) !== -1 ? this.getSpecial(thousandsDivisionInt)
                                                                     : this.convert(thousandsDivisionInt);
@@ -123,7 +124,6 @@ ConverterToWords.prototype.convert = function(number){
         result += ' ' + numerals['1000'];
       }
       else{
-        thousandsDivisionInt = parseInt(number/1000,10);
         //double recursive call
         result += ' ' + [numerals['1000'], this.convert(parseInt(number%1000,10))].join(' ');
       }
@@ -131,13 +131,20 @@ ConverterToWords.prototype.convert = function(number){
     }
   }
   else if(number >= 1000000 && number <= 999999999){
-    var millionDivisionInt = parseInt(number/1000000, 10);
-
+    
     if(number === 1000000){
       result = numerals['apocopados']['1'][1] + ' ' + numerals['1000000'][0];
     }
     else{
-      result = this.convert(millionDivisionInt) + ' ' + numerals['1000000'][1];
+      var isMillionMultiple = (number/1000000)%1 === 0,
+        millionDivisionInt = parseInt(number/1000000, 10);
+
+      result  = specialNumbers.indexOf(millionDivisionInt) !== -1 ? this.getSpecial(millionDivisionInt)
+                                                                  : this.convert(millionDivisionInt);
+      if(isMillionMultiple){
+        result += ' ' + numerals['1000000'][1];
+      }
+
     }
   }
 
