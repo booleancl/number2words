@@ -22,8 +22,7 @@ function libDescription(){
   
   function eachSetup(){
     converterToWords = new ConverterToWords();
-    converterToWords
-      .setLanguage('es');
+    converterToWords.setLanguage('es');
   }
 
   describe('Casos Especiales', cornerCasesDescription);
@@ -160,11 +159,11 @@ function libDescription(){
     it('2. Debería convertir números entre 102.000 y 990.000 de tres palabras',spec2);
     function spec2(){
       possitiveAssertionsArr = [102000,103000,104000,105000,106000,107000,108000,109000,110000,111000,112000,113000,114000,115000,116000,
-                                117000,118000,119000,120000,122000,123000,124000,125000, 126000, 127000, 128000, 129000, 130000, 140000, 150000, 
+                                117000,118000,119000,120000,122000,123000,124000,125000, 126000, 127000, 128000, 129000, 130000, 140000, 150000,
                                 160000, 170000, 180000, 190000,200000, 310000, 420000, 530000,640000, 750000,860000,970000,990000];
       expectationsArr = ['ciento dos mil', 'ciento tres mil','ciento cuatro mil','ciento cinco mil','ciento seis mil','ciento siete mil',
                          'ciento ocho mil','ciento nueve mil','ciento diez mil','ciento once mil','ciento doce mil','ciento trece mil',
-                         'ciento catorce mil', 'ciento quince mil','ciento dieciséis mil', 'ciento diecisiete mil','ciento dieciocho mil', 
+                         'ciento catorce mil', 'ciento quince mil','ciento dieciséis mil', 'ciento diecisiete mil','ciento dieciocho mil',
                          'ciento diecinueve mil','ciento veinte mil', 'ciento veintidós mil','ciento veintitrés mil', 'ciento veinticuatro mil',
                          'ciento veinticinco mil','ciento veintiséis mil','ciento veintisiete mil','ciento veintiocho mil','ciento veintinueve mil',
                          'ciento treinta mil','ciento cuarenta mil','ciento cincuenta mil', 'ciento sesenta mil','ciento setenta mil',
@@ -210,12 +209,8 @@ function libDescription(){
     it('1. Debería convertir números desde el 1.000.000 al 9.999.999',spec1);
     
     function spec1(){
-      possitiveAssertionsArr = [1000000,2000000,3000000,4000000,5000000,6000000,7000000,8000000,9000000,1111111,2222222,3333333,4444444,555555,6666666,7777777,8888888,9999999];
-      expectationsArr = ['un millón','dos millones','tres millones','cuatro millones','cinco millones','seis millones','siete millones','ocho millones','nueve millones',
-      'un millón ciento once mil ciento once','dos millones doscientos veintidós mil doscientos veintidós','tres millones trescientos treinta y tres mil trescientos treinta y tres',
-      'cuatro millones cuatrocientos cuarenta y cuatro mil cuatrocientos cuarenta y cuatro','cinco millones quinientos cincuenta y cinco mil quinientos cincuenta y cinco',
-      'seis millones seiscientos sesenta y seis mil seiscientos sesenta y seis','siete millones setecientos setenta y siete mil setecientos setenta y siete',
-      'ocho millones ochocientos ochenta y ocho mil ochocientos ochenta y ocho','nueve millones novecientos noventa y nueve mil novecientos noventa y nueve'];
+      possitiveAssertionsArr = [1000000,2000000,3000000,4000000,5000000,6000000,7000000,8000000,9000000];
+      expectationsArr = ['un millón','dos millones','tres millones','cuatro millones','cinco millones','seis millones','siete millones','ocho millones','nueve millones'];
       runningArrayExpectations(expectationsArr, possitiveAssertionsArr);
     }
 
@@ -240,6 +235,32 @@ function libDescription(){
       possitiveAssertionsArr = [31000000,42000000,53000000,64000000,75000000,86000000,97000000,88000000,79000000,60000000];
       expectationsArr = ['treinta y un millones','cuarenta y dos millones','cincuenta y tres millones','sesenta y cuatro millones','setenta y cinco millones','ochenta y seis millones',
                          'noventa y siete millones','ochenta y ocho millones','setenta y nueve millones','sesenta millones'];
+      runningArrayExpectations(expectationsArr, possitiveAssertionsArr);
+    }
+
+    it('5. Debería convertir números las centenas de millón (100.000.000 - 900.000.000)',spec5);
+    function spec5(){
+      possitiveAssertionsArr = [100000000,200000000, 300000000, 400000000, 500000000, 600000000, 700000000, 800000000, 900000000];
+      expectationsArr = ['cien millones', 'doscientos millones', 'trescientos millones', 'cuatrocientos millones', 'quinientos millones', 'seiscientos millones','setecientos millones', 'ochocientos millones', 'novecientos millones'];
+      runningArrayExpectations(expectationsArr, possitiveAssertionsArr);
+    }
+    // xit('6. Debería convertir números desde el 101.000.000 al 129.000.000 de tres palabras', spec6);
+    // xit('7. Debería convertir números desde el 131.000.000 al 999.000.000 de cuatro palabras', spec7);
+    // xit('8. Debería convertir números desde de 1.100.001 al 900.900.030 de cinco palabras', spec8);
+    // xit('9. Debería convertir números desde de 1.100.031 al 900.900.990 de seis palabras', spec9);
+    
+    xit('10. Debería convertir números desde de el 1.100.131 al 900.900.999 de siete palabras', spec10);
+    
+    function spec10(){
+      possitiveAssertionsArr = [1100131,1111111,2222222,3333333,4444444,555555,6666666,7777777,
+        8888888,9999999,900900999];
+      expectationsArr = ['un millón cien mil ciento treinta y uno','un millón ciento once mil ciento once',
+        'dos millones doscientos veintidós mil doscientos veintidós','tres millones trescientos treinta y tres mil trescientos treinta y tres',
+        'cuatro millones cuatrocientos cuarenta y cuatro mil cuatrocientos cuarenta y cuatro','cinco millones quinientos cincuenta y cinco mil quinientos cincuenta y cinco',
+        'seis millones seiscientos sesenta y seis mil seiscientos sesenta y seis','siete millones setecientos setenta y siete mil setecientos setenta y siete',
+        'ocho millones ochocientos ochenta y ocho mil ochocientos ochenta y ocho','nueve millones novecientos noventa y nueve mil novecientos noventa y nueve',
+        'novecientos millones novecientos mil novecientos noventa y nueve'
+      ];
       runningArrayExpectations(expectationsArr, possitiveAssertionsArr);
     }
 

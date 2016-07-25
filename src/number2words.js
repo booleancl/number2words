@@ -1,5 +1,6 @@
 var numerals,
     LANGUAGES;
+
 LANGUAGES = {
   SPANISH: 'es'
 };
@@ -8,30 +9,99 @@ LANGUAGES = {
 //        http://hispanoteca.eu/Foro-preguntas/ARCHIVO-Foro/Numerales%20uno-una%20-%20formas%20apocopadas.htm
 //        http://smartcubofiles.com/Libros_flip/r3/01secundaria/Leccion02.pdf
 numerals = {
-  '0-9':['cero','uno','dos','tres','cuatro','cinco','seis','siete','ocho','nueve'],
-  '10-19':['diez', 'once', 'doce', 'trece', 'catorce', 'quince','dieciséis','diecisiete','dieciocho','diecinueve'],
-  '20-29':['veinte','veintiuno', 'veintidós', 'veintitrés','veinticuatro','veinticinco','veintiséis', 'veintisiete','veintiocho','veintinueve'] ,
-  '30-90': ['treinta','cuarenta','cincuenta','sesenta','setenta','ochenta','noventa'],
-  '100-900':['cien','ciento','doscientos','trescientos','cuatrocientos','quinientos','seiscientos','setecientos','ochocientos','novecientos'],
+  
+  '0-9':[
+    'cero',
+    'uno',
+    'dos',
+    'tres',
+    'cuatro',
+    'cinco',
+    'seis',
+    'siete',
+    'ocho',
+    'nueve'
+  ],
+  
+  '10-19':[
+    'diez',
+    'once',
+    'doce',
+    'trece',
+    'catorce',
+    'quince',
+    'dieciséis',
+    'diecisiete',
+    'dieciocho',
+    'diecinueve'
+  ],
+  
+  '20-29':[
+    'veinte',
+    'veintiuno',
+    'veintidós',
+    'veintitrés',
+    'veinticuatro',
+    'veinticinco',
+    'veintiséis',
+    'veintisiete',
+    'veintiocho',
+    'veintinueve'
+  ],
+  '30-90':[
+    'treinta',
+    'cuarenta',
+    'cincuenta',
+    'sesenta',
+    'setenta',
+    'ochenta',
+    'noventa'
+  ],
+  
+  '100-900':[
+    'cien',
+    'ciento',
+    'doscientos',
+    'trescientos',
+    'cuatrocientos',
+    'quinientos',
+    'seiscientos',
+    'setecientos',
+    'ochocientos',
+    'novecientos'
+  ],
+  
   '1000': 'mil',
-  '1000000': ['millón','millones'],
-  '1000000000': ['billón','billones'],
+
+  '1000000': [
+    'millón',
+    'millones'
+  ],
+  
+  '1000000000': [
+    'billón',
+    'billones'
+  ],
+  
   //apocopados : http://goo.gl/3NNc0p
   'apocopados': {
     '1': ['y un','un'],
     '21': 'veintiún',
    }
 };
-//The library
+
+
 module.exports = ConverterToWords;
+
 function ConverterToWords(){
   var self = this;
+  this.validationRegex = /^(?!0)(?:\d+|\d{1,3}(?:\.\d{3})+)$|^0$/;
 }
 ConverterToWords.prototype.setLanguage = function(languageKey){
   this.language = LANGUAGES[''+languageKey];
 };
 ConverterToWords.prototype.isValidFormat = function(number){
-  if(/^(?!0)(?:\d+|\d{1,3}(?:\.\d{3})+)$|^0$/.test(number)){
+  if(this.validationRegex.test(number)){
     return true;
   }
   throw 'Provide an entire in a valid format';
@@ -131,23 +201,22 @@ ConverterToWords.prototype.convert = function(number){
     }
   }
   else if(number >= 1000000 && number <= 999999999){
+
+    var isMillionMultiple = (number/1000000)%1 === 0,
+        millionDivisionInt = parseInt(number/1000000, 10);
     
-    if(number === 1000000){
+    if(millionDivisionInt === 1){
       result = numerals['apocopados']['1'][1] + ' ' + numerals['1000000'][0];
     }
-    else{
-      var isMillionMultiple = (number/1000000)%1 === 0,
-        millionDivisionInt = parseInt(number/1000000, 10);
-
+    else if(isMillionMultiple){
       result  = specialNumbers.indexOf(millionDivisionInt) !== -1 ? this.getSpecial(millionDivisionInt)
                                                                   : this.convert(millionDivisionInt);
-      if(isMillionMultiple){
-        result += ' ' + numerals['1000000'][1];
-      }
-
+      result += ' ' + numerals['1000000'][1];
+    }
+    else{
+      
     }
   }
-
 
   return result;
 };
