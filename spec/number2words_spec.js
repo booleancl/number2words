@@ -244,8 +244,25 @@ function libDescription(){
       expectationsArr = ['cien millones', 'doscientos millones', 'trescientos millones', 'cuatrocientos millones', 'quinientos millones', 'seiscientos millones','setecientos millones', 'ochocientos millones', 'novecientos millones'];
       runningArrayExpectations(expectationsArr, possitiveAssertionsArr);
     }
-    // xit('6. Debería convertir números desde el 101.000.000 al 129.000.000 de tres palabras', spec6);
-    // xit('7. Debería convertir números desde el 131.000.000 al 999.000.000 de cuatro palabras', spec7);
+    
+    it('6. Debería convertir números desde el 101.000.000 al 129.000.000 de tres palabras', spec6);
+    function spec6(){
+      possitiveAssertionsArr = [101000000,102000000, 103000000, 104000000, 105000000, 106000000, 107000000, 108000000, 109000000];
+      expectationsArr = [
+        'ciento un millones', 'ciento dos millones', 'ciento tres millones', 'ciento cuatro millones', 'ciento cinco millones',
+        'ciento seis millones', 'ciento siete millones', 'ciento ocho millones','ciento nueve millones'
+      ];
+      runningArrayExpectations(expectationsArr, possitiveAssertionsArr);
+    }
+    
+    it('7. Debería convertir números desde el 131.000.000 al 999.000.000 de cuatro palabras', spec7);
+    function spec7(){
+      possitiveAssertionsArr = [131000000,142000000, 153000000, 164000000, 175000000, 186000000, 197000000, 188000000, 179000000];
+      expectationsArr = ['ciento treinta y un millones', 'ciento cuarenta y dos millones', 'ciento cincuenta y tres millones', 'ciento sesenta y cuatro millones',
+        'ciento setenta y cinco millones', 'ciento ochenta y seis millones', 'ciento noventa y siete millones','ciento ochenta y ocho millones', 'ciento setenta y nueve millones'
+      ];
+      runningArrayExpectations(expectationsArr, possitiveAssertionsArr);
+    }
     // xit('8. Debería convertir números desde de 1.100.001 al 900.900.030 de cinco palabras', spec8);
     // xit('9. Debería convertir números desde de 1.100.031 al 900.900.990 de seis palabras', spec9);
     

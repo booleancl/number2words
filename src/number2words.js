@@ -86,7 +86,7 @@ numerals = {
   //apocopados : http://goo.gl/3NNc0p
   'apocopados': {
     '1': ['y un','un'],
-    '21': 'veintiún',
+    '21': 'veintiún'
    }
 };
 
@@ -179,6 +179,8 @@ ConverterToWords.prototype.convert = function(number){
       }
     }
   }
+
+
   else if(number >= 1000 && number <= 999999){
     if(number === 1000){
       result = numerals['1000'];
@@ -200,6 +202,8 @@ ConverterToWords.prototype.convert = function(number){
       
     }
   }
+
+
   else if(number >= 1000000 && number <= 999999999){
 
     var isMillionMultiple = (number/1000000)%1 === 0,
