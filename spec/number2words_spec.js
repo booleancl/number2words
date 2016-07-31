@@ -25,7 +25,7 @@ function libDescription(){
     converterToWords.setLanguage('es');
   }
 
-  xdescribe('Casos Especiales', cornerCasesDescription);
+  describe('Casos Especiales', cornerCasesDescription);
   function cornerCasesDescription(){
     
     beforeEach(eachSetup);
@@ -111,7 +111,7 @@ function libDescription(){
     }
   }
   
-  xdescribe('Números del 100 al 999', description5);
+  describe('Números del 100 al 999', description5);
   function description5(){
     it('1. Debería convertir las centenas entre 100 y 900',spec1);
     function spec1(){
@@ -140,7 +140,7 @@ function libDescription(){
     }
   }
   
-  xdescribe('Números del 1000 al 999.999',description6);
+  describe('Números del 1000 al 999.999',description6);
   function description6(){
     it('1. Debería convertir los múltiplos de 1000 hasta el 900.000 de 1 o dos palabras',spec1);
     function spec1(){
@@ -203,7 +203,7 @@ function libDescription(){
   }
 
 
-  xdescribe('Números del 1.000.000 al 999.999.999', description7);
+  describe('Números del 1.000.000 al 999.999.999', description7);
   function description7(){
     
     it('1. Debería convertir números desde el 1.000.000 al 9.999.999',spec1);
@@ -266,7 +266,7 @@ function libDescription(){
     // xit('8. Debería convertir números desde de 1.100.001 al 900.900.030 de cinco palabras', spec8);
     // xit('9. Debería convertir números desde de 1.100.031 al 900.900.990 de seis palabras', spec9);
     
-    xit('10. Debería convertir números desde de el 1.100.131 al 900.900.999 de siete palabras', spec10);
+    it('10. Debería convertir números desde de el 1.100.131 al 900.900.999 de siete palabras', spec10);
     
     function spec10(){
       possitiveAssertionsArr = [1100131,1111111,2222222,3333333,4444444,555555,6666666,7777777,
