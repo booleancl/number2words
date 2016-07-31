@@ -10,7 +10,7 @@ LANGUAGES = {
 //        http://smartcubofiles.com/Libros_flip/r3/01secundaria/Leccion02.pdf
 numerals = {
   
-  '0-9':[
+  '0-29':[
     'cero',
     'uno',
     'dos',
@@ -20,10 +20,7 @@ numerals = {
     'seis',
     'siete',
     'ocho',
-    'nueve'
-  ],
-  
-  '10-19':[
+    'nueve',
     'diez',
     'once',
     'doce',
@@ -33,10 +30,7 @@ numerals = {
     'dieciséis',
     'diecisiete',
     'dieciocho',
-    'diecinueve'
-  ],
-  
-  '20-29':[
+    'diecinueve',
     'veinte',
     'veintiuno',
     'veintidós',
@@ -71,18 +65,14 @@ numerals = {
     'novecientos'
   ],
   
-  '1000': 'mil',
-
-  '1000000': [
-    'millón',
-    'millones'
-  ],
-  
-  '1000000000': [
+  '1000-1000000000': [
+    'mil',
+    'millón', 
+    'millones',
     'billón',
     'billones'
   ],
-  
+
   //apocopados : http://goo.gl/3NNc0p
   'apocopados': {
     '1': ['y un','un'],
@@ -108,119 +98,134 @@ ConverterToWords.prototype.isValidFormat = function(number){
 };
 ConverterToWords.prototype.getSpecial = function(number){
   
-  var specialNumber;
+  // var specialNumber;
 
   
-  switch(number){
-    case 21:
-      specialNumber = numerals['apocopados']['21']; //veintiún
-      break;
-    case 31:
-    case 41:
-    case 51:
-    case 61:
-    case 71:
-    case 81:
-    case 91:
-      specialNumber = numerals['30-90'][parseInt(number/10,10) - 3] + ' ' + numerals['apocopados']['1'][0]; //y un
-      break;
-    case 121:         //ciento                        //veintiún
-      specialNumber = numerals['100-900'][1] + ' '  + numerals['apocopados']['21'];
-      break;
-    case 101:
-    case 201:
-    case 301:
-    case 401:
-    case 501:
-    case 601:
-    case 701:
-    case 801:
-    case 901:
-      specialNumber = numerals['100-900'][parseInt(number/100,10)] + ' ' + numerals['apocopados']['1'][1]; //un
-      break;
-  }
-  return specialNumber;
+  // switch(number){
+  //   case 21:
+  //     specialNumber = numerals['apocopados']['21']; //veintiún
+  //     break;
+  //   case 31:
+  //   case 41:
+  //   case 51:
+  //   case 61:
+  //   case 71:
+  //   case 81:
+  //   case 91:
+  //     specialNumber = numerals['30-90'][parseInt(number/10,10) - 3] + ' ' + numerals['apocopados']['1'][0]; //y un
+  //     break;
+  //   case 121:         //ciento                        //veintiún
+  //     specialNumber = numerals['100-900'][1] + ' '  + numerals['apocopados']['21'];
+  //     break;
+  //   case 101:
+  //   case 201:
+  //   case 301:
+  //   case 401:
+  //   case 501:
+  //   case 601:
+  //   case 701:
+  //   case 801:
+  //   case 901:
+  //     specialNumber = numerals['100-900'][parseInt(number/100,10)] + ' ' + numerals['apocopados']['1'][1]; //un
+  //     break;
+  // }
+  // return specialNumber;
 };
 /* Think about this when you refactoring the function convert
     http://stackoverflow.com/questions/32347732/efficiency-vs-legibility-of-code
 */
 ConverterToWords.prototype.convert = function(number){
+  
   var result,
-      specialNumbers = [101,201,301,401,501,601,701,801,901,121,21,31,41,51,61,71,81,91];
-  //Valid format
+      tens;
+  
   if(this.isValidFormat(number)){
     number = parseInt(('' + number).replace(/\./g,''), 10);
   }
-  //Spanish strategy
-  if(number >= 0 && number <= 9){
-    result = numerals['0-9'][number];
-  }
-  else if(number >= 10 && number <= 19){
-    result = numerals['10-19'][number - 10];
-  }
-  else if(number >= 20 && number <= 29){
-    result = numerals['20-29'][number - 20];
+
+  if(number >= 0 && number <= 29){
+    result = numerals['0-29'][number];
   }
   else if(number >= 30 && number <= 99){
-    result  = numerals['30-90'][parseInt(number/10,10) - 3];
-    if(number%10 > 0) result += ' y ' + numerals['0-9'] [number%10];
-  }
-  else if(number >= 100 && number <= 999){
-    if(number === 100){
-      result = numerals['100-900'][0];
-    }
-    else {
-      if((number/100)%1 === 0){
-        result = numerals['100-900'][parseInt(number/100,10)];
-      }
-      if((number/100)%1 !== 0){
-        result = numerals['100-900'][parseInt(number/100,10)];
-        result += ' ' + this.convert(parseInt(number%100,10)); //recursive call
-      }
-    }
-  }
-
-
-  else if(number >= 1000 && number <= 999999){
-    if(number === 1000){
-      result = numerals['1000'];
-    }
-    else{
-      var isThousandsMultiple = (number/1000)%1 === 0,
-        thousandsDivisionInt = parseInt(number/1000, 10);
-      
-      //recursive call
-      result  = specialNumbers.indexOf(thousandsDivisionInt) !== -1 ? this.getSpecial(thousandsDivisionInt)
-                                                                    : this.convert(thousandsDivisionInt);
-      if(isThousandsMultiple){
-        result += ' ' + numerals['1000'];
-      }
-      else{
-        //double recursive call
-        result += ' ' + [numerals['1000'], this.convert(parseInt(number%1000,10))].join(' ');
-      }
-      
-    }
-  }
-
-
-  else if(number >= 1000000 && number <= 999999999){
-
-    var isMillionMultiple = (number/1000000)%1 === 0,
-        millionDivisionInt = parseInt(number/1000000, 10);
-    
-    if(millionDivisionInt === 1){
-      result = numerals['apocopados']['1'][1] + ' ' + numerals['1000000'][0];
-    }
-    else if(isMillionMultiple){
-      result  = specialNumbers.indexOf(millionDivisionInt) !== -1 ? this.getSpecial(millionDivisionInt)
-                                                                  : this.convert(millionDivisionInt);
-      result += ' ' + numerals['1000000'][1];
-    }
-    else{
-      
-    }
+    tens = parseInt(number/10,10);
+    result = numerals['30-90'][tens - 3];
+    result += number % 10 === 0 ? ''
+                                : ' y ' + this.convert(number%10);
   }
 
   return result;
+  // var result,
+  //     specialNumbers = [101,201,301,401,501,601,701,801,901,121,21,31,41,51,61,71,81,91];
+  // //Spanish strategy
+  // if(number >= 0 && number <= 9){
+  //   result = numerals['0-9'][number];
+  // }
+  // else if(number >= 10 && number <= 19){
+  //   result = numerals['10-19'][number - 10];
+  // }
+  // else if(number >= 20 && number <= 29){
+  //   result = numerals['20-29'][number - 20];
+  // }
+  // else if(number >= 30 && number <= 99){
+  //   result  = numerals['30-90'][parseInt(number/10,10) - 3];
+  //   if(number%10 > 0) result += ' y ' + numerals['0-9'] [number%10];
+  // }
+  // else if(number >= 100 && number <= 999){
+  //   if(number === 100){
+  //     result = numerals['100-900'][0];
+  //   }
+  //   else {
+  //     if((number/100)%1 === 0){
+  //       result = numerals['100-900'][parseInt(number/100,10)];
+  //     }
+  //     if((number/100)%1 !== 0){
+  //       result = numerals['100-900'][parseInt(number/100,10)];
+  //       result += ' ' + this.convert(parseInt(number%100,10)); //recursive call
+  //     }
+  //   }
+  // }
+
+
+  // else if(number >= 1000 && number <= 999999){
+  //   if(number === 1000){
+  //     result = numerals['1000'];
+  //   }
+  //   else{
+  //     var isThousandsMultiple = (number/1000)%1 === 0,
+  //       thousandsDivisionInt = parseInt(number/1000, 10);
+      
+  //     //recursive call
+  //     result  = specialNumbers.indexOf(thousandsDivisionInt) !== -1 ? this.getSpecial(thousandsDivisionInt)
+  //                                                                   : this.convert(thousandsDivisionInt);
+  //     if(isThousandsMultiple){
+  //       result += ' ' + numerals['1000'];
+  //     }
+  //     else{
+  //       //double recursive call
+  //       result += ' ' + [numerals['1000'], this.convert(parseInt(number%1000,10))].join(' ');
+  //     }
+      
+  //   }
+  // }
+
+
+  // else if(number >= 1000000 && number <= 999999999){
+
+  //   var isMillionMultiple = (number/1000000)%1 === 0,
+  //       millionDivisionInt = parseInt(number/1000000, 10);
+    
+  //   if(millionDivisionInt === 1){
+  //     result = numerals['apocopados']['1'][1] + ' ' + numerals['1000000'][0];
+  //   }
+  //   else if(isMillionMultiple){
+  //     result  = specialNumbers.indexOf(millionDivisionInt) !== -1 ? this.getSpecial(millionDivisionInt)
+  //                                                                 : this.convert(millionDivisionInt);
+  //     result += ' ' + numerals['1000000'][1];
+  //   }
+  //   else{
+      
+  //   }
+  // }
+
+  // return result;
 };
