@@ -9,6 +9,7 @@ var LANGUAGES = {
       //http://tip.dis.ulpgc.es/numeros-texto/default.aspx
       'exponentes': {
         'singulares': {
+          '2': 'cien',
           '6': 'millón',
           '12': 'billón',
           '18': 'trillón',
@@ -19,7 +20,7 @@ var LANGUAGES = {
         'plurales': {
           '3': 'mil',
           '6': 'millones',
-          '12': 'billones', 
+          '12': 'billones',
           '18': 'trillones',
           '24': 'cuatrillones',
           '30': 'quintillones',
@@ -39,9 +40,9 @@ var LANGUAGES = {
           '0': 'cero','1': 'uno', '2': 'dos', '3': 'tres', '4': 'cuatro', '5': 'cinco',
           '6': 'seis','7': 'siete', '8': 'ocho', '9': 'nueve', '10': 'diez',
           '11': 'once', '12': 'doce', '13': 'trece', '14': 'catorce', '15': 'quince',
-          '16': 'dieciseis', '17': 'diecisiete', '18': 'dieciocho', '19': 'diecinueve','20': 'veinte',
-          '21': 'veintiuno', '22':'veintidós', '23': 'veintitres', '24': 'veinticuatro', '25': 'venticinco',
-          '26': 'veintiseis', '27': 'veintisiete', '28': 'veintiocho', '29': 'veintinueve'
+          '16': 'dieciséis', '17': 'diecisiete', '18': 'dieciocho', '19': 'diecinueve','20': 'veinte',
+          '21': 'veintiuno', '22':'veintidós', '23': 'veintitrés', '24': 'veinticuatro', '25': 'veinticinco',
+          '26': 'veintiséis', '27': 'veintisiete', '28': 'veintiocho', '29': 'veintinueve'
         },
         '30-90': {
           '30': 'treinta',
@@ -55,7 +56,7 @@ var LANGUAGES = {
       }, //decenas
       
       'centenas': {
-        '100': 'cien',
+        '100': 'ciento',
         '200': 'doscientos',
         '300': 'trescientos',
         '400': 'cuatrocientos',
@@ -77,10 +78,53 @@ function ConverterToWords(){
 
 ConverterToWords.prototype.setLanguage = function(language){
   this.language = language;
-}
+};
 
-ConverterToWords.prototype.rules = function(chunk, number_lenght){
-  return dictionary['decenas']['0-29'][chunk];
+ConverterToWords.prototype.rules = function(chunk, number_length){
+  
+  var chunk_text = '',
+      parsed_chunk = parseInt(chunk, 10),
+      
+      tensBase,
+      tensUnity,
+      
+      hundredsBase,
+      hundredsTens;
+
+  switch(chunk.length){
+    case 1:
+      chunk_text = dictionary['decenas']['0-29'][chunk];
+      break;
+    case 2:
+      tensBase =  chunk.slice(0,1) + '0';
+      tensUnity = chunk.slice(-1);
+      
+      if(parsed_chunk > 29){
+        chunk_text += dictionary['decenas']['30-90'][tensBase];
+        chunk_text += tensUnity !== '0' ? ' y ' + dictionary['decenas']['0-29'][tensUnity]  : '';
+      }
+      else{
+        chunk_text = dictionary['decenas']['0-29'][chunk];
+      }
+      break;
+    case 3:
+
+      if(chunk === '100'){
+        chunk_text += dictionary['exponentes']['singulares']['2'];
+      }
+
+      else{
+        hundredsBase = chunk.slice(0,1) + '00';
+        hundredsTens = chunk.slice(-2);
+
+        chunk_text += hundredsTens === '00' ? dictionary['centenas'][hundredsBase]
+                                            : dictionary['centenas'][hundredsBase] + ' ' + (hundredsTens[0] === '0' ? dictionary['decenas']['0-29'][hundredsTens.slice(-1)] : this.rules(hundredsTens));
+      }
+        
+      break;
+  }
+
+  return chunk_text;
 };
 
 ConverterToWords.prototype.convert = function(number, chunk_index, total_chunks, converted_text){
@@ -99,4 +143,4 @@ ConverterToWords.prototype.convert = function(number, chunk_index, total_chunks,
     return text;
   }
   return this.convert(number, chunk_index, length, text);
-}
+};

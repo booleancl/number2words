@@ -1,5 +1,4 @@
 var ConverterToWords = require('../src/number2words');
-
 describe('Convertir números a palabras', libDescription);
 
 function libDescription(){
@@ -25,7 +24,7 @@ function libDescription(){
     converterToWords.setLanguage('es');
   }
 
-  describe('Casos Especiales', cornerCasesDescription);
+  xdescribe('Casos Especiales', cornerCasesDescription);
   function cornerCasesDescription(){
     
     beforeEach(eachSetup);
@@ -67,7 +66,7 @@ function libDescription(){
     }
     
   }
-  describe('Números del 0 al 9', description1);
+ describe('Números del 0 al 9', description1);
   function description1(){
     
     beforeEach(eachSetup);
@@ -80,7 +79,7 @@ function libDescription(){
       runningArrayExpectations(expectationsArr, possitiveAssertionsArr);
     }
   }
-  describe('Números del 10 al 19', description2);
+ describe('Números del 10 al 19', description2);
   function description2(){
     it('1. Debería convertir números del 11 al 19 en palabras',spec1);
     function spec1(){
@@ -90,7 +89,7 @@ function libDescription(){
     }
   }
   
-  describe('Números del 20 al 29', description3);
+ describe('Números del 20 al 29', description3);
   function description3(){
     it('1. Debería convertir números del 20 al 29 en palabras',spec1);
     function spec1(){
@@ -100,7 +99,7 @@ function libDescription(){
     }
   }
   
-  describe('Números del 30 al 99', description4);
+ describe('Números del 30 al 99', description4);
   function description4(){
     it('1. Debería convertir números del 30 al 99 en palabras',spec1);
     function spec1(){
@@ -111,7 +110,7 @@ function libDescription(){
     }
   }
   
-  describe('Números del 100 al 999', description5);
+ describe('Números del 100 al 999', description5);
   function description5(){
     it('1. Debería convertir las centenas entre 100 y 900',spec1);
     function spec1(){
@@ -140,7 +139,7 @@ function libDescription(){
     }
   }
   
-  describe('Números del 1000 al 999.999',description6);
+ xdescribe('Números del 1000 al 999.999',description6);
   function description6(){
     it('1. Debería convertir los múltiplos de 1000 hasta el 900.000 de 1 o dos palabras',spec1);
     function spec1(){
@@ -203,7 +202,7 @@ function libDescription(){
   }
 
 
-  describe('Números del 1.000.000 al 999.999.999', description7);
+ xdescribe('Números del 1.000.000 al 999.999.999', description7);
   function description7(){
     
     it('1. Debería convertir números desde el 1.000.000 al 9.999.999',spec1);

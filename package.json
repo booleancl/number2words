@@ -1,6 +1,6 @@
 {
   "name": "number2words",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A library to convert a number input in words. Support multiple languages.",
   "main": "index.js",
   "scripts": {
