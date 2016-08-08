@@ -24,7 +24,7 @@ function libDescription(){
     converterToWords.setLanguage('es');
   }
 
-  describe('Casos Especiales', cornerCasesDescription);
+  xdescribe('Casos Especiales', cornerCasesDescription);
   function cornerCasesDescription(){
     
     beforeEach(eachSetup);
@@ -254,16 +254,16 @@ function libDescription(){
       runningArrayExpectations(expectationsArr, possitiveAssertionsArr);
     }
     
-    it('7. Debería convertir números desde el 132.000.000 al 999.000.000 de cuatro palabras', spec7);
+    it('7. Debería convertir números desde el 131.000.000 al 999.000.000 de cuatro palabras', spec7);
     function spec7(){
-      possitiveAssertionsArr = [142000000, 153000000, 164000000, 175000000, 186000000, 197000000, 188000000, 179000000];
-      expectationsArr = ['ciento cuarenta y dos millones', 'ciento cincuenta y tres millones', 'ciento sesenta y cuatro millones',
+      possitiveAssertionsArr = [131000000,142000000, 153000000, 164000000, 175000000, 186000000, 197000000, 188000000, 179000000];
+      expectationsArr = ['ciento treinta y un millones', 'ciento cuarenta y dos millones', 'ciento cincuenta y tres millones', 'ciento sesenta y cuatro millones',
         'ciento setenta y cinco millones', 'ciento ochenta y seis millones', 'ciento noventa y siete millones','ciento ochenta y ocho millones', 'ciento setenta y nueve millones'
       ];
       runningArrayExpectations(expectationsArr, possitiveAssertionsArr);
     }
-    // xit('8. Debería convertir números desde de 1.100.001 al 900.900.030 de cinco palabras', spec8);
-    // xit('9. Debería convertir números desde de 1.100.031 al 900.900.990 de seis palabras', spec9);
+    // it('8. Debería convertir números desde de 1.100.001 al 900.900.030 de cinco palabras', spec8);
+    // it('9. Debería convertir números desde de 1.100.031 al 900.900.990 de seis palabras', spec9);
     
     it('10. Debería convertir números desde de el 1.100.131 al 900.900.999 de siete palabras', spec10);
     

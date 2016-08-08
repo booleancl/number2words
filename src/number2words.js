@@ -102,6 +102,14 @@ function ConverterToWords(){
 
 ConverterToWords.prototype.setLanguage = function(language){
   this.language = language;
+  this.validationRegex = /^(?!0)(?:\d+|\d{1,3}(?:\.\d{3})+)$|^0$/;
+};
+
+ConverterToWords.prototype.isValidFormat = function(number){
+  if(this.validationRegex.test(number)){
+    return true;
+  }
+  throw 'Provide an entire in a valid format';
 };
 
 ConverterToWords.prototype.rules = function(chunk, chunk_index, total_chunks){
@@ -136,17 +144,21 @@ ConverterToWords.prototype.rules = function(chunk, chunk_index, total_chunks){
         chunk_text += dictionary['decenas']['30-90'][tensBase];
         
         if(tensUnity !== '0'){
-          chunk_text += ' y ' + this.rules(tensUnity, chunk_index, total_chunks);
+          if(tensUnity === '1' && (total_chunks - chunk_index) >= 1){
+            chunk_text += ' y ' + dictionary['apocopados']['1'];
+          }
+          else{
+            chunk_text += ' y ' + this.rules(tensUnity, chunk_index, total_chunks); 
+          }
         }
       }
       else{
-        if(chunk === '21' && (total_chunks - chunk_index) > 1){
+        if(chunk === '21' && (total_chunks - chunk_index) >= 1){
           chunk_text = dictionary['apocopados']['21'];
         }
         else{
           chunk_text = dictionary['decenas']['0-29'][chunk];
         }
-        
       }
       break;
     
@@ -195,6 +207,11 @@ ConverterToWords.prototype.rules = function(chunk, chunk_index, total_chunks){
 };
 
 ConverterToWords.prototype.convert = function(number, chunk_index, total_chunks, converted_text){
+  
+  if(this.isValidFormat(number)){
+    number = parseInt(('' + number).replace(/\./g,''), 10);
+  }
+
   number += '';
   
   var regex = /\d{1,3}(?=(\d{3})*$)/g, //http://goo.gl/oxhsya
