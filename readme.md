@@ -25,3 +25,4 @@ Requirements:
 - Adding a more solid testing suite.
 - create a dockerfile
 - Add nodeinspector
+- Improve readbility and [ciclomatic complexity](http://damienlepage.com/cyclomatic-complexity/)

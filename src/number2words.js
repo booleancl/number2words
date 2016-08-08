@@ -148,7 +148,7 @@ ConverterToWords.prototype.rules = function(chunk, chunk_index, total_chunks){
             chunk_text += ' y ' + dictionary['apocopados']['1'];
           }
           else{
-            chunk_text += ' y ' + this.rules(tensUnity, chunk_index, total_chunks); 
+            chunk_text += ' y ' + this.rules(tensUnity, chunk_index, total_chunks);
           }
         }
       }
