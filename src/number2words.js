@@ -118,7 +118,14 @@ ConverterToWords.prototype.rules = function(chunk, chunk_index, total_chunks){
   switch(chunk.length){
     
     case 1:
-      chunk_text = dictionary['decenas']['0-29'][chunk];
+      
+      //apocopado 1
+      if( (chunk.slice(-1) === '1') && (total_chunks - chunk_index) > 1){
+        chunk_text = dictionary['apocopados']['1'];
+      }
+      else{
+        chunk_text = dictionary['decenas']['0-29'][chunk];
+      }
       break;
     
     case 2:
@@ -129,38 +136,58 @@ ConverterToWords.prototype.rules = function(chunk, chunk_index, total_chunks){
         chunk_text += dictionary['decenas']['30-90'][tensBase];
         
         if(tensUnity !== '0'){
-          chunk_text += ' y ' + dictionary['decenas']['0-29'][tensUnity];
+          chunk_text += ' y ' + this.rules(tensUnity, chunk_index, total_chunks);
         }
       }
       else{
-        chunk_text = dictionary['decenas']['0-29'][chunk];
+        if(chunk === '21' && (total_chunks - chunk_index) > 1){
+          chunk_text = dictionary['apocopados']['21'];
+        }
+        else{
+          chunk_text = dictionary['decenas']['0-29'][chunk];
+        }
+        
       }
       break;
     
     case 3:
-
+      
       if(chunk === '100'){
         chunk_text += dictionary['exponentes']['singulares']['2'];
       }
-      else{
-        hundredsBase = chunk.slice(0,1) + '00';
-        hundredsTens = chunk.slice(-2);
+      else if(chunk !== '000'){
 
-        if(hundredsTens === '00'){
-          chunk_text +=  dictionary['centenas'][hundredsBase];
+        if(chunk.slice(0,2) === '00'){
+          chunk_text += dictionary['decenas']['0-29'][chunk.slice(-1)];
         }
         else{
-          chunk_text += dictionary['centenas'][hundredsBase] + ' ';
-          
-          if(hundredsTens[0] === '0'){
-            chunk_text += dictionary['decenas']['0-29'][hundredsTens.slice(-1)];
+          hundredsBase = chunk.slice(0,1) + '00';
+          hundredsTens = chunk.slice(-2);
+
+          if(hundredsTens === '00'){
+            chunk_text +=  dictionary['centenas'][hundredsBase];
           }
-          else{
+          else if(chunk.slice(0,1) === '0'){
             chunk_text += this.rules(hundredsTens, chunk_index, total_chunks);
           }
+          else{
+            chunk_text += dictionary['centenas'][hundredsBase] + ' ';
+            
+            if(hundredsTens[0] === '0'){
+              if(chunk.slice(-2) === '01' && (total_chunks - chunk_index) > 0){
+                chunk_text += dictionary['apocopados']['1'];
+              }
+              else{
+                chunk_text += dictionary['decenas']['0-29'][hundredsTens.slice(-1)];
+              }
+            }
+            else{
+              chunk_text += this.rules(hundredsTens, chunk_index, total_chunks);
+            }
+          }
         }
-
       }
+      
       break;
   }
   
@@ -170,26 +197,38 @@ ConverterToWords.prototype.rules = function(chunk, chunk_index, total_chunks){
 ConverterToWords.prototype.convert = function(number, chunk_index, total_chunks, converted_text){
   number += '';
   
-  var length = total_chunks || Math.ceil(number.length/3),
-      regex = /\d{1,3}(?=(\d{3})*$)/g, //http://goo.gl/oxhsya
+  var regex = /\d{1,3}(?=(\d{3})*$)/g, //http://goo.gl/oxhsya
       text = converted_text || '';
-      
+
+  total_chunks = total_chunks || Math.ceil(number.length/3);
+
   if(!chunk_index) chunk_index = 0;
   
   chunk = (number).match(regex)[chunk_index++];
   
-  text += this.rules(chunk, chunk_index, length) + ' ';
-
-  switch(length - chunk_index){
-
-    case 1:
-      text += dictionary['exponentes']['plurales']['3'] + ' ';
-      break;
+  if(number !== '1000'){
+    text += this.rules(chunk, chunk_index, total_chunks) + ' ';
   }
-  
-  if(chunk_index === length){
+  if(chunk !== '000'){
+    switch(total_chunks - chunk_index){
+      case 1:
+        text += dictionary['exponentes']['plurales']['3'] + ' ';
+        break;
+
+      case 2:
+        if((chunk === '1' || chunk === '01') && (total_chunks - chunk_index) > 1){
+          text += dictionary['exponentes']['singulares']['6'] + ' ';
+        }
+        else{
+          text += dictionary['exponentes']['plurales']['6'] + ' ';
+        }
+        break;
+    }
+  }
+  //End of recursivity
+  if(chunk_index === total_chunks){
     return text.trim();
   }
 
-  return this.convert(number, chunk_index, length, text);
+  return this.convert(number, chunk_index, total_chunks, text);
 };
