@@ -163,7 +163,6 @@ ConverterToWords.prototype.rules = function(chunk, chunk_index, total_chunks){
       break;
     
     case 3:
-      
       if(chunk === '100'){
         chunk_text += dictionary['exponentes']['singulares']['2'];
       }
@@ -223,23 +222,21 @@ ConverterToWords.prototype.convert = function(number, chunk_index, total_chunks,
   
   chunk = (number).match(regex)[chunk_index++];
   
-  if(number !== '1000'){
+  if ((chunk === '1' || chunk === '01' || chunk === '001' ) && (total_chunks - chunk_index) % 2 != 0){
+    
+  }
+  else if(number !== '1000'){
     text += this.rules(chunk, chunk_index, total_chunks) + ' ';
   }
   if(chunk !== '000'){
-    switch(total_chunks - chunk_index){
-      case 1:
-        text += dictionary['exponentes']['plurales']['3'] + ' ';
-        break;
-
-      case 2:
-        if((chunk === '1' || chunk === '01') && (total_chunks - chunk_index) > 1){
-          text += dictionary['exponentes']['singulares']['6'] + ' ';
-        }
-        else{
-          text += dictionary['exponentes']['plurales']['6'] + ' ';
-        }
-        break;
+    if ((total_chunks - chunk_index) % 2 != 0){
+      text += dictionary['exponentes']['plurales']['3'] + ' ';
+    }
+    else if((chunk === '1' || chunk === '01') && (total_chunks - chunk_index) > 1){
+      text += dictionary['exponentes']['singulares']['6'] + ' ';
+    }
+    else if((total_chunks - chunk_index) > 0){
+      text += dictionary['exponentes']['plurales']['6'] + ' ';
     }
   }
   //End of recursivity
