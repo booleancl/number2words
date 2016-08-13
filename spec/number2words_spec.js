@@ -143,10 +143,10 @@ function libDescription(){
   function description6(){
     it('1. Debería convertir los múltiplos de 1000 hasta el 900.000 de 1 o dos palabras',spec1);
     function spec1(){
-      possitiveAssertionsArr = [1000,2000,3000,4000,5000,6000,7000,8000,9000,10000,11000,12000,13000,14000,15000,16000,17000,18000,19000,20000,
+      possitiveAssertionsArr = [1031,2000,3000,4000,5000,6000,7000,8000,9000,10000,11000,12000,13000,14000,15000,16000,17000,18000,19000,20000,
                                 22000,23000,24000,25000,26000,27000,28000,29000,30000,40000,50000,60000,70000,80000,90000,100000,200000,300000,
                                 400000,500000,600000,700000,800000,900000];
-      expectationsArr = ['mil','dos mil','tres mil','cuatro mil','cinco mil','seis mil','siete mil','ocho mil','nueve mil','diez mil',
+      expectationsArr = ['mil treinta y uno','dos mil','tres mil','cuatro mil','cinco mil','seis mil','siete mil','ocho mil','nueve mil','diez mil',
                          'once mil','doce mil','trece mil','catorce mil','quince mil','dieciséis mil','diecisiete mil','dieciocho mil',
                          'diecinueve mil','veinte mil','veintidós mil','veintitrés mil','veinticuatro mil','veinticinco mil','veintiséis mil',
                          'veintisiete mil','veintiocho mil','veintinueve mil','treinta mil','cuarenta mil','cincuenta mil','sesenta mil',
@@ -244,7 +244,7 @@ function libDescription(){
       runningArrayExpectations(expectationsArr, possitiveAssertionsArr);
     }
     
-    it('6. Debería convertir números desde el 101.000.000 al 129.000.000 de tres palabras', spec6);
+    it('6. Debería convertir números de tres palabras', spec6);
     function spec6(){
       possitiveAssertionsArr = [101000000,102000000, 103000000, 104000000, 105000000, 106000000, 107000000, 108000000, 109000000];
       expectationsArr = [
@@ -254,7 +254,7 @@ function libDescription(){
       runningArrayExpectations(expectationsArr, possitiveAssertionsArr);
     }
     
-    it('7. Debería convertir números desde el 131.000.000 al 999.000.000 de cuatro palabras', spec7);
+    it('7. Debería convertir números de cuatro palabras', spec7);
     function spec7(){
       possitiveAssertionsArr = [131000000,142000000, 153000000, 164000000, 175000000, 186000000, 197000000, 188000000, 179000000];
       expectationsArr = ['ciento treinta y un millones', 'ciento cuarenta y dos millones', 'ciento cincuenta y tres millones', 'ciento sesenta y cuatro millones',
@@ -262,10 +262,24 @@ function libDescription(){
       ];
       runningArrayExpectations(expectationsArr, possitiveAssertionsArr);
     }
-    // it('8. Debería convertir números desde de 1.100.001 al 900.900.030 de cinco palabras', spec8);
-    // it('9. Debería convertir números desde de 1.100.031 al 900.900.990 de seis palabras', spec9);
     
-    it('10. Debería convertir números desde de el 1.100.131 al 900.900.999 de siete palabras', spec10);
+    it('8. Debería convertir números de cinco palabras', spec8);
+    
+    function spec8(){
+      possitiveAssertionsArr = [1220000];
+      expectationsArr = ['un millón doscientos veinte mil'];
+      runningArrayExpectations(expectationsArr, possitiveAssertionsArr);
+    }
+    
+    it('9. Debería convertir números de seis palabras', spec9);
+    
+    function spec9(){
+      possitiveAssertionsArr = [1220001];
+      expectationsArr = ['un millón doscientos veinte mil uno'];
+      runningArrayExpectations(expectationsArr, possitiveAssertionsArr);
+    }
+    
+    it('10. Debería convertir números siete palabras', spec10);
     
     function spec10(){
       possitiveAssertionsArr = [1100131,1111111,2222222,3333333,4444444,5555555,6666666,7777777,
@@ -279,6 +293,15 @@ function libDescription(){
       ];
       runningArrayExpectations(expectationsArr, possitiveAssertionsArr);
     }
+
+    it('11. Debería convertir números de ocho palabras', spec11);
+    
+    function spec11(){
+      possitiveAssertionsArr = [1220001031];
+      expectationsArr = ['mil doscientos veinte millones mil treinta y uno'];
+      runningArrayExpectations(expectationsArr, possitiveAssertionsArr);
+    }
+
 
   }
 
