@@ -6,3 +6,6 @@ script:
   - jasmine-node spec/ --color --verbose
 before_script:
   - npm install
+addons:
+  code_climate:
+      repo_token: aa712832c53be457394a70da8a40f79ce80301c0ca6f7fbfebf8c003a3828473
