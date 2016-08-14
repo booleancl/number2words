@@ -20,9 +20,12 @@ Requirements:
 - npm test
 
 ## to do features:
+- Adding support for your language ([understand the algorithm idea]())
 - Languages exportable module for global configuration.
-- Adding more gramatically-cases test.
+- Adding more gramatically corner-cases for the test suite.
 - Adding a more solid testing suite.
-- create a dockerfile
 - Add nodeinspector
 - Improve readbility and [ciclomatic complexity](http://damienlepage.com/cyclomatic-complexity/)
+- Create a Dockerfile for work using the ES6 Syntax
+- Use es6 for development
+- Generate a node version distribution and browserfied version to the browser
