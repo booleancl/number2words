@@ -9,7 +9,7 @@
 [codeclimate-coverage-image]: https://codeclimate.com/github/gpincheiraa/number2words/badges/coverage.svg
 [codeclimate-coverage-url]: https://codeclimate.com/github/gpincheiraa/number2words/coverage
 
-[![Build Status][travis-image]][travis-url] [![Code Climate][codeclimate-image]][codeclimate-url][![Test Coverage][codeclimate-coverage-image]][codeclimate-coverage-url]
+[![Build Status][travis-image]][travis-url] [![Code Climate][codeclimate-image]][codeclimate-url] [![Test Coverage][codeclimate-coverage-image]][codeclimate-coverage-url]
 
 A library to convert a number input in words. Support multiple languages.
 
