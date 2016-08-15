@@ -42,13 +42,22 @@ function libDescription(){
     it('3. Debería manejar numerales apocopados',spec3);
     function spec3(){
 
-      possitiveAssertionsArr = [121021,21021,31021,41021,51028,61744,71453,81224,91003,101202,201322, 301000];
-      expectationsArr = [ 'ciento veintiún mil veintiuno','veintiún mil veintiuno',
-                          'treinta y un mil veintiuno','cuarenta y un mil veintiuno',
-                          'cincuenta y un mil veintiocho','sesenta y un mil setecientos cuarenta y cuatro',
-                          'setenta y un mil cuatrocientos cincuenta y tres','ochenta y un mil doscientos veinticuatro',
-                          'noventa y un mil tres', 'ciento un mil doscientos dos','doscientos un mil trescientos veintidós',
-                          'trescientos un mil'];
+      possitiveAssertionsArr = [21000,21021,121021,31121051, 31021,41021,51028,61744,71453,81224,91003,101202,201322, 301000, 921000075001];
+      expectationsArr = [ 'veintiún mil',
+                          'veintiún mil veintiuno',
+                          'ciento veintiún mil veintiuno',
+                          'treinta y un millones ciento veintiún mil cincuenta y uno',
+                          'treinta y un mil veintiuno',
+                          'cuarenta y un mil veintiuno',
+                          'cincuenta y un mil veintiocho',
+                          'sesenta y un mil setecientos cuarenta y cuatro',
+                          'setenta y un mil cuatrocientos cincuenta y tres',
+                          'ochenta y un mil doscientos veinticuatro',
+                          'noventa y un mil tres',
+                          'ciento un mil doscientos dos',
+                          'doscientos un mil trescientos veintidós',
+                          'trescientos un mil',
+                          'novecientos veintiún mil millones setenta y cinco mil uno'];
       
       runningArrayExpectations(expectationsArr, possitiveAssertionsArr);
     }
