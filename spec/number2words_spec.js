@@ -24,14 +24,13 @@ function libDescription(){
     converterToWords.setLanguage('es');
   }
 
-  xdescribe('Casos Especiales', cornerCasesDescription);
+  describe('Casos Especiales', cornerCasesDescription);
   function cornerCasesDescription(){
     
     beforeEach(eachSetup);
     
     it('1. Debería manejar números negativos',spec1);
     function spec1(){
-      
     }
     it('2. Debería manejar strings inclusive con formato de miles. Debe transformar la entrada a number ',spec2);
     function spec2(){

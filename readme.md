@@ -20,6 +20,8 @@ Requirements:
 - npm test
 
 ## to do features:
+- Adding coverage istanbul report and code-climate coverage badge 
+[https://goo.gl/fRwCAy](https://goo.gl/fRwCAy), [https://goo.gl/fKjMU2](https://goo.gl/fKjMU2)
 - Adding support for your language ([understand the algorithm idea]())
 - Languages exportable module for global configuration.
 - Adding more gramatically corner-cases for the test suite.

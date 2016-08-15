@@ -1,0 +1,992 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for spec/number2words_spec.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../index.html">all files</a> / <a href="index.html">spec/</a> number2words_spec.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">91.3% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>147/161</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/0</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">82.93% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>34/41</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">91.3% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>147/161</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">23×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">264×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">264×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">var ConverterToWords = require('../src/number2words');
+describe('Convertir números a palabras', libDescription);
+&nbsp;
+function libDescription(){
+  //////////////        GLOBALS     //////////////////////
+  var converterToWords,
+      expectationsArr,
+      possitiveAssertionsArr,
+      negativeAssertionsArr;
+&nbsp;
+  function runningArrayExpectations(expectationsArr, compareArr){
+    expectationsArr.forEach(function(convertedWord, index){
+      //Arrange: basics conditions to run the assertion (in this case this conditions are resolved in the beforeEach block)
+      // - NO -
+      //Act: execute the action that triggers the functionality that we are testing
+      var wordAssertion = converterToWords.convert(compareArr[index]);
+      //Assertion &amp;&amp; Logging: The fact that it's expected to happen
+      expect(wordAssertion).toEqual(convertedWord);
+    });
+  }
+  
+  function eachSetup(){
+    converterToWords = new ConverterToWords();
+    converterToWords.setLanguage('es');
+  }
+&nbsp;
+  xdescribe('Casos Especiales', cornerCasesDescription);
+<span class="fstat-no" title="function not covered" >  function cornerCasesDescription(){</span>
+    
+<span class="cstat-no" title="statement not covered" >    beforeEach(eachSetup);</span>
+    
+<span class="cstat-no" title="statement not covered" >    it('1. Debería manejar números negativos',spec1);</span>
+<span class="fstat-no" title="function not covered" >    function spec1(){</span>
+      
+    }
+<span class="cstat-no" title="statement not covered" >    it('2. Debería manejar strings inclusive con formato de miles. Debe transformar la entrada a number ',spec2);</span>
+<span class="fstat-no" title="function not covered" >    function spec2(){</span>
+<span class="cstat-no" title="statement not covered" >      expect(converterToWords.convert('12456')).toEqual('doce mil cuatrocientos cincuenta y seis');</span>
+<span class="cstat-no" title="statement not covered" >      expect(converterToWords.convert('120.456')).toEqual('ciento veinte mil cuatrocientos cincuenta y seis');</span>
+    }
+    
+    
+<span class="cstat-no" title="statement not covered" >    it('3. Debería manejar numerales apocopados',spec3);</span>
+<span class="fstat-no" title="function not covered" >    function spec3(){</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >      possitiveAssertionsArr = [121021,21021,31021,41021,51028,61744,71453,81224,91003,101202,201322, 301000];</span>
+<span class="cstat-no" title="statement not covered" >      expectationsArr = [ 'ciento veintiún mil veintiuno','veintiún mil veintiuno',</span>
+                          'treinta y un mil veintiuno','cuarenta y un mil veintiuno',
+                          'cincuenta y un mil veintiocho','sesenta y un mil setecientos cuarenta y cuatro',
+                          'setenta y un mil cuatrocientos cincuenta y tres','ochenta y un mil doscientos veinticuatro',
+                          'noventa y un mil tres', 'ciento un mil doscientos dos','doscientos un mil trescientos veintidós',
+                          'trescientos un mil'];
+      
+<span class="cstat-no" title="statement not covered" >      runningArrayExpectations(expectationsArr, possitiveAssertionsArr);</span>
+    }
+    
+<span class="cstat-no" title="statement not covered" >    it('4. Debería arrojar una excepción cuando se entregue un formato no válido', spec4);</span>
+<span class="fstat-no" title="function not covered" >    function spec4(){</span>
+<span class="cstat-no" title="statement not covered" >      negativeAssertionsArr = ['.12adada1','10000.0','100,000','1.2000','15000.0', 1.22];</span>
+      
+<span class="cstat-no" title="statement not covered" >      negativeAssertionsArr.forEach(<span class="fstat-no" title="function not covered" >function(value){</span></span>
+<span class="cstat-no" title="statement not covered" >        expect(<span class="fstat-no" title="function not covered" >function(){</span></span>
+<span class="cstat-no" title="statement not covered" >          converterToWords.convert(value);</span>
+        }).toThrow();
+      });
+    }
+    
+  }
+ describe('Números del 0 al 9', description1);
+  function description1(){
+    
+    beforeEach(eachSetup);
+    
+    it('1. Debería convertir números del 0 al 9 en palabras', spec1);
+    //numerals['0-9']:['cero','uno','dos','tres','cuatro','cinco','seis','siete','ocho','nueve']
+    function spec1(){
+      possitiveAssertionsArr = [0,1,2,3,4,5,6,7,8,9];
+      expectationsArr = ['cero','uno','dos','tres','cuatro','cinco','seis','siete','ocho','nueve'];
+      runningArrayExpectations(expectationsArr, possitiveAssertionsArr);
+    }
+  }
+ describe('Números del 10 al 19', description2);
+  function description2(){
+    it('1. Debería convertir números del 11 al 19 en palabras',spec1);
+    function spec1(){
+      possitiveAssertionsArr = [10,11,12,13,14,15,16,17,18,19];
+      expectationsArr = ['diez', 'once', 'doce', 'trece', 'catorce', 'quince','dieciséis','diecisiete','dieciocho','diecinueve'];
+      runningArrayExpectations(expectationsArr, possitiveAssertionsArr);
+    }
+  }
+  
+ describe('Números del 20 al 29', description3);
+  function description3(){
+    it('1. Debería convertir números del 20 al 29 en palabras',spec1);
+    function spec1(){
+      possitiveAssertionsArr = [20,22,23,24,25,26,27,28,29];
+      expectationsArr = ['veinte', 'veintidós', 'veintitrés','veinticuatro','veinticinco','veintiséis', 'veintisiete','veintiocho','veintinueve'];
+      runningArrayExpectations(expectationsArr, possitiveAssertionsArr);
+    }
+  }
+  
+ describe('Números del 30 al 99', description4);
+  function description4(){
+    it('1. Debería convertir números del 30 al 99 en palabras',spec1);
+    function spec1(){
+      possitiveAssertionsArr = [30,41,52,63,64,75,77,88,99];
+      expectationsArr = ['treinta', 'cuarenta y uno', 'cincuenta y dos', 'sesenta y tres', 'sesenta y cuatro', 'setenta y cinco', 'setenta y siete',
+                         'ochenta y ocho', 'noventa y nueve'];
+      runningArrayExpectations(expectationsArr, possitiveAssertionsArr);
+    }
+  }
+  
+ describe('Números del 100 al 999', description5);
+  function description5(){
+    it('1. Debería convertir las centenas entre 100 y 900',spec1);
+    function spec1(){
+      possitiveAssertionsArr = [100,200,300,400,500,600,700,800,900];
+      expectationsArr = ['cien','doscientos','trescientos','cuatrocientos','quinientos','seiscientos','setecientos','ochocientos','novecientos'];
+      runningArrayExpectations(expectationsArr, possitiveAssertionsArr);
+    }
+    
+    it('2. Debería convertir números entre 100 y 900 de dos palabras',spec2);
+    function spec2(){
+      possitiveAssertionsArr = [101,110,202,211,303,312,404,413,505,514,606,615,707,716,808,817,
+                                909,918,819,720,621,522,423,324,225,126,227,328,429,530,640,750,860,970,880,790,
+                                681,572,483,394,285,176];
+      expectationsArr = ['ciento uno', 'ciento diez', 'doscientos dos', 'doscientos once', 'trescientos tres',
+                         'trescientos doce','cuatrocientos cuatro','cuatrocientos trece','quinientos cinco',
+                         'quinientos catorce','seiscientos seis','seiscientos quince','setecientos siete',
+                         'setecientos dieciséis','ochocientos ocho','ochocientos diecisiete','novecientos nueve',
+                         'novecientos dieciocho','ochocientos diecinueve','setecientos veinte','seiscientos veintiuno',
+                         'quinientos veintidós','cuatrocientos veintitrés','trescientos veinticuatro','doscientos veinticinco',
+                         'ciento veintiséis','doscientos veintisiete','trescientos veintiocho','cuatrocientos veintinueve',
+                         'quinientos treinta','seiscientos cuarenta','setecientos cincuenta','ochocientos sesenta',
+                         'novecientos setenta','ochocientos ochenta','setecientos noventa',
+                         'seiscientos ochenta y uno','quinientos setenta y dos','cuatrocientos ochenta y tres',
+                         'trescientos noventa y cuatro','doscientos ochenta y cinco','ciento setenta y seis' ];
+      runningArrayExpectations(expectationsArr,possitiveAssertionsArr);
+    }
+  }
+  
+ describe('Números del 1000 al 999.999',description6);
+  function description6(){
+    it('1. Debería convertir los múltiplos de 1000 hasta el 900.000 de 1 o dos palabras',spec1);
+    function spec1(){
+      possitiveAssertionsArr = [1031,2000,3000,4000,5000,6000,7000,8000,9000,10000,11000,12000,13000,14000,15000,16000,17000,18000,19000,20000,
+                                22000,23000,24000,25000,26000,27000,28000,29000,30000,40000,50000,60000,70000,80000,90000,100000,200000,300000,
+                                400000,500000,600000,700000,800000,900000];
+      expectationsArr = ['mil treinta y uno','dos mil','tres mil','cuatro mil','cinco mil','seis mil','siete mil','ocho mil','nueve mil','diez mil',
+                         'once mil','doce mil','trece mil','catorce mil','quince mil','dieciséis mil','diecisiete mil','dieciocho mil',
+                         'diecinueve mil','veinte mil','veintidós mil','veintitrés mil','veinticuatro mil','veinticinco mil','veintiséis mil',
+                         'veintisiete mil','veintiocho mil','veintinueve mil','treinta mil','cuarenta mil','cincuenta mil','sesenta mil',
+                         'setenta mil','ochenta mil','noventa mil','cien mil','doscientos mil','trescientos mil','cuatrocientos mil','quinientos mil',
+                         'seiscientos mil','setecientos mil','ochocientos mil','novecientos mil'];
+      runningArrayExpectations(expectationsArr,possitiveAssertionsArr);
+    }
+    
+    it('2. Debería convertir números entre 102.000 y 990.000 de tres palabras',spec2);
+    function spec2(){
+      possitiveAssertionsArr = [102000,103000,104000,105000,106000,107000,108000,109000,110000,111000,112000,113000,114000,115000,116000,
+                                117000,118000,119000,120000,122000,123000,124000,125000, 126000, 127000, 128000, 129000, 130000, 140000, 150000,
+                                160000, 170000, 180000, 190000,200000, 310000, 420000, 530000,640000, 750000,860000,970000,990000];
+      expectationsArr = ['ciento dos mil', 'ciento tres mil','ciento cuatro mil','ciento cinco mil','ciento seis mil','ciento siete mil',
+                         'ciento ocho mil','ciento nueve mil','ciento diez mil','ciento once mil','ciento doce mil','ciento trece mil',
+                         'ciento catorce mil', 'ciento quince mil','ciento dieciséis mil', 'ciento diecisiete mil','ciento dieciocho mil',
+                         'ciento diecinueve mil','ciento veinte mil', 'ciento veintidós mil','ciento veintitrés mil', 'ciento veinticuatro mil',
+                         'ciento veinticinco mil','ciento veintiséis mil','ciento veintisiete mil','ciento veintiocho mil','ciento veintinueve mil',
+                         'ciento treinta mil','ciento cuarenta mil','ciento cincuenta mil', 'ciento sesenta mil','ciento setenta mil',
+                         'ciento ochenta mil','ciento noventa mil','doscientos mil','trescientos diez mil','cuatrocientos veinte mil',
+                         'quinientos treinta mil','seiscientos cuarenta mil','setecientos cincuenta mil','ochocientos sesenta mil',
+                         'novecientos setenta mil','novecientos noventa mil'];
+      runningArrayExpectations(expectationsArr, possitiveAssertionsArr);
+    }
+    
+    it('3. Debería convertir números entre 102.001 y 990.900 de cuatro palabras',spec3);
+    function spec3(){
+      possitiveAssertionsArr = [102001,990900];
+      expectationsArr = ['ciento dos mil uno','novecientos noventa mil novecientos'];
+      runningArrayExpectations(expectationsArr, possitiveAssertionsArr);
+    }
+    
+    it('4. Debería convertir números entre 102.031 y 990.990 de cinco palabras',spec4);
+    function spec4(){
+      possitiveAssertionsArr = [102031,990990];
+      expectationsArr = ['ciento dos mil treinta y uno','novecientos noventa mil novecientos noventa'];
+      runningArrayExpectations(expectationsArr, possitiveAssertionsArr);
+    }
+    
+    it('5. Debería convertir números entre 102.131 y 990.999 de seis palabras',spec5);
+    function spec5(){
+      possitiveAssertionsArr = [102131,990999];
+      expectationsArr = ['ciento dos mil ciento treinta y uno','novecientos noventa mil novecientos noventa y nueve'];
+      runningArrayExpectations(expectationsArr, possitiveAssertionsArr);
+    }
+    
+    it('6. Debería convertir números entre 132.131 y 999.999 de siete palabras',spec6);
+    function spec6(){
+      possitiveAssertionsArr = [132131,999999];
+      expectationsArr = ['ciento treinta y dos mil ciento treinta y uno','novecientos noventa y nueve mil novecientos noventa y nueve'];
+      runningArrayExpectations(expectationsArr, possitiveAssertionsArr);
+    }
+  }
+&nbsp;
+&nbsp;
+ describe('Números del 1.000.000 al 999.999.999', description7);
+  function description7(){
+    
+    it('1. Debería convertir números desde el 1.000.000 al 9.999.999',spec1);
+    
+    function spec1(){
+      possitiveAssertionsArr = [1000000,2000000,3000000,4000000,5000000,6000000,7000000,8000000,9000000];
+      expectationsArr = ['un millón','dos millones','tres millones','cuatro millones','cinco millones','seis millones','siete millones','ocho millones','nueve millones'];
+      runningArrayExpectations(expectationsArr, possitiveAssertionsArr);
+    }
+&nbsp;
+    it('2. Debería convertir números desde el 10.000.000 al 19.000.000',spec2);
+    function spec2(){
+      possitiveAssertionsArr = [10000000,11000000,12000000,13000000,14000000,15000000,16000000,17000000,18000000,19000000];
+      expectationsArr = ['diez millones','once millones','doce millones','trece millones','catorce millones','quince millones','dieciséis millones',
+                         'diecisiete millones','dieciocho millones','diecinueve millones'];
+      runningArrayExpectations(expectationsArr, possitiveAssertionsArr);
+    }
+&nbsp;
+    it('3. Debería convertir números desde el 20.000.000 al 29.000.000',spec3);
+    function spec3(){
+      possitiveAssertionsArr = [20000000,21000000,22000000,23000000,24000000,25000000,26000000,27000000,28000000,29000000];
+      expectationsArr = ['veinte millones','veintiún millones','veintidós millones','veintitrés millones','veinticuatro millones','veinticinco millones',
+                         'veintiséis millones','veintisiete millones','veintiocho millones','veintinueve millones'];
+      runningArrayExpectations(expectationsArr, possitiveAssertionsArr);
+    }
+&nbsp;
+    it('4. Debería convertir números desde el 30.000.000 al 99.000.000',spec4);
+    function spec4(){
+      possitiveAssertionsArr = [31000000,42000000,53000000,64000000,75000000,86000000,97000000,88000000,79000000,60000000];
+      expectationsArr = ['treinta y un millones','cuarenta y dos millones','cincuenta y tres millones','sesenta y cuatro millones','setenta y cinco millones','ochenta y seis millones',
+                         'noventa y siete millones','ochenta y ocho millones','setenta y nueve millones','sesenta millones'];
+      runningArrayExpectations(expectationsArr, possitiveAssertionsArr);
+    }
+&nbsp;
+    it('5. Debería convertir números las centenas de millón (100.000.000 - 900.000.000)',spec5);
+    function spec5(){
+      possitiveAssertionsArr = [100000000,200000000, 300000000, 400000000, 500000000, 600000000, 700000000, 800000000, 900000000];
+      expectationsArr = ['cien millones', 'doscientos millones', 'trescientos millones', 'cuatrocientos millones', 'quinientos millones', 'seiscientos millones','setecientos millones', 'ochocientos millones', 'novecientos millones'];
+      runningArrayExpectations(expectationsArr, possitiveAssertionsArr);
+    }
+    
+    it('6. Debería convertir números de tres palabras', spec6);
+    function spec6(){
+      possitiveAssertionsArr = [101000000,102000000, 103000000, 104000000, 105000000, 106000000, 107000000, 108000000, 109000000];
+      expectationsArr = [
+        'ciento un millones', 'ciento dos millones', 'ciento tres millones', 'ciento cuatro millones', 'ciento cinco millones',
+        'ciento seis millones', 'ciento siete millones', 'ciento ocho millones','ciento nueve millones'
+      ];
+      runningArrayExpectations(expectationsArr, possitiveAssertionsArr);
+    }
+    
+    it('7. Debería convertir números de cuatro palabras', spec7);
+    function spec7(){
+      possitiveAssertionsArr = [131000000,142000000, 153000000, 164000000, 175000000, 186000000, 197000000, 188000000, 179000000];
+      expectationsArr = ['ciento treinta y un millones', 'ciento cuarenta y dos millones', 'ciento cincuenta y tres millones', 'ciento sesenta y cuatro millones',
+        'ciento setenta y cinco millones', 'ciento ochenta y seis millones', 'ciento noventa y siete millones','ciento ochenta y ocho millones', 'ciento setenta y nueve millones'
+      ];
+      runningArrayExpectations(expectationsArr, possitiveAssertionsArr);
+    }
+    
+    it('8. Debería convertir números de cinco palabras', spec8);
+    
+    function spec8(){
+      possitiveAssertionsArr = [1220000];
+      expectationsArr = ['un millón doscientos veinte mil'];
+      runningArrayExpectations(expectationsArr, possitiveAssertionsArr);
+    }
+    
+    it('9. Debería convertir números de seis palabras', spec9);
+    
+    function spec9(){
+      possitiveAssertionsArr = [1220001];
+      expectationsArr = ['un millón doscientos veinte mil uno'];
+      runningArrayExpectations(expectationsArr, possitiveAssertionsArr);
+    }
+    
+    it('10. Debería convertir números siete palabras', spec10);
+    
+    function spec10(){
+      possitiveAssertionsArr = [1100131,1111111,2222222,3333333,4444444,5555555,6666666,7777777,
+        8888888,9999999,900900999];
+      expectationsArr = ['un millón cien mil ciento treinta y uno','un millón ciento once mil ciento once',
+        'dos millones doscientos veintidós mil doscientos veintidós','tres millones trescientos treinta y tres mil trescientos treinta y tres',
+        'cuatro millones cuatrocientos cuarenta y cuatro mil cuatrocientos cuarenta y cuatro','cinco millones quinientos cincuenta y cinco mil quinientos cincuenta y cinco',
+        'seis millones seiscientos sesenta y seis mil seiscientos sesenta y seis','siete millones setecientos setenta y siete mil setecientos setenta y siete',
+        'ocho millones ochocientos ochenta y ocho mil ochocientos ochenta y ocho','nueve millones novecientos noventa y nueve mil novecientos noventa y nueve',
+        'novecientos millones novecientos mil novecientos noventa y nueve'
+      ];
+      runningArrayExpectations(expectationsArr, possitiveAssertionsArr);
+    }
+&nbsp;
+    it('11. Debería convertir números de ocho palabras', spec11);
+    
+    function spec11(){
+      possitiveAssertionsArr = [1220001031];
+      expectationsArr = ['mil doscientos veinte millones mil treinta y uno'];
+      runningArrayExpectations(expectationsArr, possitiveAssertionsArr);
+    }
+&nbsp;
+&nbsp;
+  }
+&nbsp;
+&nbsp;
+&nbsp;
+}</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sun Aug 14 2016 21:16:55 GMT-0300 (CLST)
+</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>

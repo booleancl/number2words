@@ -4,7 +4,9 @@
   "description": "A library to convert a number input in words. Support multiple languages.",
   "main": "index.js",
   "scripts": {
-    "test": "jasmine-node spec/ src/ --autotest --color --verbose"
+    "test": "jasmine-node spec/ src/ --autotest --color --verbose",
+    "coverage": "istanbul cover jasmine-node spec/ src/",
+    "serve-coverage": "http-server coverage/lcov-report/"
   },
   "repository": {
     "type": "git",
@@ -22,6 +24,8 @@
   },
   "homepage": "https://github.com/gpincheiraa/number2words#readme",
   "devDependencies": {
+    "http-server": "^0.9.0",
+    "istanbul": "^0.4.4",
     "jasmine-node": "^1.14.5"
   }
 }
