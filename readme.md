@@ -6,7 +6,10 @@
 [codeclimate-image]: https://codeclimate.com/github/gpincheiraa/number2words/badges/gpa.svg
 [codeclimate-url]: https://codeclimate.com/github/gpincheiraa/number2words
 
-[![Build Status][travis-image]][travis-url] [![Code Climate][codeclimate-image]][codeclimate-url]
+[codeclimate-coverage-image]: https://codeclimate.com/github/gpincheiraa/number2words/badges/coverage.svg
+[codeclimate-coverage-url]: https://codeclimate.com/github/gpincheiraa/number2words/coverage
+
+[![Build Status][travis-image]][travis-url] [![Code Climate][codeclimate-image]][codeclimate-url][![Test Coverage][codeclimate-coverage-image]][codeclimate-coverage-url]
 
 A library to convert a number input in words. Support multiple languages.
 
@@ -21,7 +24,7 @@ Requirements:
 
 ## to do features:
 - Adding coverage istanbul report and code-climate coverage badge 
-[https://goo.gl/fRwCAy](https://goo.gl/fRwCAy), [https://goo.gl/fKjMU2](https://goo.gl/fKjMU2)
+[https://goo.gl/fRwCAy](https://goo.gl/fRwCAy), [https://goo.gl/fKjMU2](https://goo.gl/fKjMU2) &#10003;
 - Adding support for your language ([understand the algorithm idea]())
 - Languages exportable module for global configuration.
 - Adding more gramatically corner-cases for the test suite.
