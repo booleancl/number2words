@@ -222,21 +222,31 @@ ConverterToWords.prototype.convert = function(number, chunk_index, total_chunks,
   
   chunk = (number).match(regex)[chunk_index++];
   
+  var numberexp=(total_chunks - chunk_index) * 3;
+  
+  
   if ((chunk === '1' || chunk === '01' || chunk === '001' ) && (total_chunks - chunk_index) % 2 != 0){
     
   }
   else if(number !== '1000'){
     text += this.rules(chunk, chunk_index, total_chunks) + ' ';
   }
-  if(chunk !== '000'){
+  if(chunk !== '000' || (numberexp >= 9)){
+    
+    if(numberexp >= 9 && numberexp % 3 == 0 && numberexp % 2 != 0){
+      numberexp=3;
+    }
+    
+    numberexp += '';
+    
     if ((total_chunks - chunk_index) % 2 != 0){
-      text += dictionary['exponentes']['plurales']['3'] + ' ';
+      text += dictionary['exponentes']['plurales'][numberexp] + ' ';
     }
     else if((chunk === '1' || chunk === '01') && (total_chunks - chunk_index) > 1){
-      text += dictionary['exponentes']['singulares']['6'] + ' ';
+      text += dictionary['exponentes']['singulares'][numberexp] + ' ';
     }
     else if((total_chunks - chunk_index) > 0){
-      text += dictionary['exponentes']['plurales']['6'] + ' ';
+      text += dictionary['exponentes']['plurales'][numberexp] + ' ';
     }
   }
   //End of recursivity

@@ -301,6 +301,14 @@ function libDescription(){
       expectationsArr = ['mil doscientos veinte millones mil treinta y uno'];
       runningArrayExpectations(expectationsArr, possitiveAssertionsArr);
     }
+    
+    it('12. Debería convertir números de dos palabras', spec12);
+    
+    function spec12(){
+      possitiveAssertionsArr = [2000000000000000];
+      expectationsArr = ['dos mil billones'];
+      runningArrayExpectations(expectationsArr, possitiveAssertionsArr);
+    }
 
 
   }
