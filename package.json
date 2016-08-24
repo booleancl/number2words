@@ -4,8 +4,7 @@
   "description": "A library to convert a number input in words. Support multiple languages.",
   "main": "index.js",
   "scripts": {
-    "test": "jasmine-node spec/ src/ --autotest --color --verbose",
-    "coverage": "istanbul cover jasmine-node spec/ src/",
+    "test": "istanbul cover jasmine-node -- --color --autotest --verbose spec/ src/",
     "serve-coverage": "http-server coverage/lcov-report/"
   },
   "repository": {
