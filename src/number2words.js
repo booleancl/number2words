@@ -224,14 +224,13 @@ ConverterToWords.prototype.convert = function(number, chunk_index, total_chunks,
   
   var numberexp=(total_chunks - chunk_index) * 3;
   
-  
   if ((chunk === '1' || chunk === '01' || chunk === '001' ) && (total_chunks - chunk_index) % 2 != 0){
     
   }
   else if(number !== '1000'){
     text += this.rules(chunk, chunk_index, total_chunks) + ' ';
   }
-  if(chunk !== '000' || (numberexp >= 9)){
+  if(chunk !== '000' || (numberexp >= 12)){
     
     if(numberexp >= 9 && numberexp % 3 == 0 && numberexp % 2 != 0){
       numberexp=3;
