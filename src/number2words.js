@@ -230,7 +230,7 @@ ConverterToWords.prototype.convert = function(number, chunk_index, total_chunks,
   else if(number !== '1000'){
     text += this.rules(chunk, chunk_index, total_chunks) + ' ';
   }
-  if(chunk !== '000' || (numberexp >= 12)){
+  if(chunk !== '000' || (numberexp >= 6 && total_chunks>3)){
     
     if(numberexp >= 9 && numberexp % 3 == 0 && numberexp % 2 != 0){
       numberexp=3;
