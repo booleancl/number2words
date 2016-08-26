@@ -129,27 +129,28 @@ ConverterToWords.prototype.convert = function(number, chunk_index, total_chunks,
   
   chunk = (number).match(regex)[chunk_index++];
   
+  var numberexp = (total_chunks - chunk_index) * 3;
   //SE ESTÁ VOLVIENDO POCO ENTENDIBLE, SE DEBE MEJORAR LEGIBILIDAD.
-  if ((chunk === '1' || chunk === '01' || chunk === '001' ) && (total_chunks - chunk_index) % 2 !== 0){
-    
+  if ((chunk === '1' || chunk === '01' || chunk === '001' ) && (total_chunks - chunk_index) % 2 != 0){
+  
   }
   else if(number !== '1000'){
     text += this.rules(chunk, chunk_index, total_chunks) + ' ';
   }
-  if(chunk !== '000'){
-    if ((total_chunks - chunk_index) % 2 !== 0){
-      text += dictionary['exponentes']['plurales']['3'] + ' ';
-
-      if((total_chunks - chunk_index) === 3 && total_chunks === 4 && chunk.length === 3){
-        text += dictionary['exponentes']['plurales']['6'];
-      }
-
+  if(chunk !== '000' || (numberexp >= 6 && total_chunks > 3)){
+    
+    if(numberexp >= 9 && numberexp % 3 === 0 && numberexp % 2 !== 0){
+      numberexp = 3;
     }
-    else if((chunk === '1' || chunk === '01') && (total_chunks - chunk_index) > 1){
-      text += dictionary['exponentes']['singulares']['6'] + ' ';
+    numberexp += '';
+    
+    if ((chunk === '1' || chunk === '01') && (total_chunks - chunk_index) > 1){
+      text += dictionary['exponentes']['singulares'][numberexp] + ' ';
+      console.log(chunk, number,dictionary['exponentes']['plurales'][numberexp], numberexp);
     }
-    else if((total_chunks - chunk_index) > 0 ){
-      text += dictionary['exponentes']['plurales']['6'] + ' ';
+    else if((total_chunks - chunk_index) % 2 != 0 || (total_chunks - chunk_index) > 0){
+      text += dictionary['exponentes']['plurales'][numberexp] + ' ';
+      console.log(chunk, number, dictionary['exponentes']['singulares'][numberexp], numberexp);
     }
   }
   //End of recursivity

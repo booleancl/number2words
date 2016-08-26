@@ -328,8 +328,8 @@ function libDescription(){
     it('1. Debería convertir números del 1.000.000.000 al 10.000.000.000', spec1);
 
     function spec1(){
-      possitiveAssertionsArr = [1000000000,2000000000, 3000000000, 4000000000, 5000000000, 6000000000,
-        7000000000, 8000000000, 9000000000, 10000000000];
+      possitiveAssertionsArr = [100000000000,2000000000000, 3000000000000, 4000000000000, 5000000000000, 6000000000000,
+        7000000000000, 8000000000000, 9000000000000, 10000000000000];
       expectationsArr = ['un billón', 'dos billones', 'tres billones', 'cuatro billones', 'cinco billones',
         'seis billones', 'siete billones', 'ocho billones', 'nueve billones', 'diez billones'
       ];
