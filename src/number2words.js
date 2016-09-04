@@ -133,7 +133,7 @@ function addPostfix(chunk_block, chunk_number, chunk_index){
                                         : dictionary['bloques']['plurales'][chunk_block];
     }
   }
-  else if(chunk_block > 1 && chunk_index === 2 && chunk_block % 2 === 0){
+  else if(!isOdd && chunk_block > 1 && chunk_index === 2){
     postfix_text = dictionary['bloques']['plurales'][chunk_block];
   }
   
