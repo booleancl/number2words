@@ -1,30 +1,39 @@
 module.exports = {
-  // Regla del español.fuente: http://goo.gl/QbJci0
+  //Regla del español.fuente: http://goo.gl/QbJci0
   //segun la cantidad de ceros sabremos como nombrarlos
   
-  //utilizar esta herramienta para conocer los nombres de los exponentes muy altos 
+  //Utilizar esta herramienta para conocer los nombres de los exponentes muy altos 
   //http://tip.dis.ulpgc.es/numeros-texto/default.aspx
   
-  'exponentes': {
+  //Bloques correspondientes a los chunks que le darán "apellido" a cada chunk analizado
+  'bloques': {
+    
     'singulares': {
-      '2': 'cien',
-      '6': 'millón',
-      '12': 'billón',
-      '18': 'trillón',
-      '24': 'cuatrillón',
-      '30': 'quintillón',
-      '36': 'sextillón'
+      '0': 'cien',
+      '2': 'millón',
+      '4': 'billón',
+      '6': 'trillón',
+      '8': 'cuatrillón',
+      '10': 'quintillón',
+      '12': 'sextillón',
+      '14': 'septillón'
+      //...
     },
+    
     'plurales': {
-      '3': 'mil',
-      '6': 'millones',
-      '12': 'billones',
-      '18': 'trillones',
-      '24': 'cuatrillones',
-      '30': 'quintillones',
-      '36': 'sextillones'
+      '1': 'mil',
+      '2': 'millones',
+      '4': 'billones',
+      '6': 'trillones',
+      '8': 'cuatrillones',
+      '10': 'quintillones',
+      '12': 'sextillones',
+      '14': 'septillones'
+      //...
     }
+  
   },
+  
   'apocopados': {
     '1': 'un',
     '21': 'veintiún',

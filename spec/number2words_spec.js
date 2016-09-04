@@ -22,7 +22,6 @@ function libDescription(){
   
   function eachSetup(){
     converterToWords = new ConverterToWords();
-    converterToWords.setLanguage('es');
   }
 
   describe('Casos Especiales', cornerCasesDescription);
@@ -321,20 +320,46 @@ function libDescription(){
     }
   }
 
-  describe('Números del 1.000.000.000 al 999.999.999.999', description8);
+  describe('Números del 1.000.000.000.000 al 999.999.999.999.999', description8);
   
   function description8(){
 
-    it('1. Debería convertir números del 1.000.000.000 al 10.000.000.000', spec1);
+    it('1. Debería convertir números del 1.000.000.000.000 al 30.000.000.000.000 de dos palabras', spec1);
 
     function spec1(){
-      possitiveAssertionsArr = [100000000000,2000000000000, 3000000000000, 4000000000000, 5000000000000, 6000000000000,
-        7000000000000, 8000000000000, 9000000000000, 10000000000000];
+      possitiveAssertionsArr = [1000000000000,2000000000000, 3000000000000, 4000000000000, 5000000000000, 6000000000000,
+        7000000000000, 8000000000000, 9000000000000, 10000000000000, 15000000000000, 22000000000000, 30000000000000];
       expectationsArr = ['un billón', 'dos billones', 'tres billones', 'cuatro billones', 'cinco billones',
-        'seis billones', 'siete billones', 'ocho billones', 'nueve billones', 'diez billones'
+        'seis billones', 'siete billones', 'ocho billones', 'nueve billones', 'diez billones', 'quince billones', 'veintidós billones',
+        'treinta billones'
       ];
       runningArrayExpectations(expectationsArr, possitiveAssertionsArr);
     }
+
+    it('1. Debería convertir números del 31.000.000.000.000 al 99.000.000.000.000 de tres palabras', spec2);
+
+    function spec2(){
+      possitiveAssertionsArr = [31000000000000, 55000000000000, 99000000000000];
+      expectationsArr = ['treinta y un billones', 'cincuenta y cinco billones', 'noventa y nueve billones'];
+
+      runningArrayExpectations(expectationsArr, possitiveAssertionsArr);
+    }
+
+  }
+
+  describe('Números del 1.000.000.000.000.000.000 al 999.999.999.999.999.999.999', description9);
+
+  function description9(){
+
+    it('Debería convertir números del 1.000.000.000.000.000.000 al 30.000.000.000.000.000.000 de dos palabras', spec1);
+
+    function spec1(){
+      possitiveAssertionsArr = [5000000000000000000, 12000000000000000000];
+      expectationsArr = ['cinco trillones', 'doce trillones'];
+
+      runningArrayExpectations(expectationsArr, possitiveAssertionsArr);
+    }
+
   }
 
 
