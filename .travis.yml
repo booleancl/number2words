@@ -6,9 +6,8 @@ before_script:
   - npm install
   - npm install -g codeclimate-test-reporter
 script: 
-  - jasmine-node spec/ --color --verbose
+  - istanbul cover node_modules/jasmine-node/bin/jasmine-node -- --color --verbose spec/ src/
 after_script:
-  - npm run coverage
   - codeclimate-test-reporter < coverage/lcov.info
 addons:
   code_climate:
