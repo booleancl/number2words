@@ -29,7 +29,6 @@ Requirements:
 - Languages exportable module for global configuration.
 - Adding more gramatically corner-cases for the test suite.
 - Adding a more solid testing suite.
-- Add nodeinspector
 - Improve readbility and [ciclomatic complexity](http://damienlepage.com/cyclomatic-complexity/)
 - Create a Dockerfile for work using the ES6 Syntax
 - Use es6 for development
