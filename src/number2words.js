@@ -118,12 +118,12 @@ function rules(chunk, chunk_index, total_chunks, chunk_block){
 }
 
 //Agrega el postfijo correspondiente al bloque de chunks analizado
-function addPostfix(chunk_block, chunk_number, chunk_index){
+function addPostfix(chunk_block, chunk_number, chunk_index,flag){
   
   var isOdd = chunk_block % 2 !== 0,
       postfix_text = '';
 
-  if(chunk_number > 0 ) {
+  if(chunk_number > 0 || flag === 1) {
     if(isOdd){
       postfix_text = dictionary['bloques']['plurales']['1'];
     }
@@ -141,7 +141,7 @@ function addPostfix(chunk_block, chunk_number, chunk_index){
 }
 
 //Función que realiza la conversión de número a texto
-function convert(number, chunk_index, total_chunks, converted_text){
+function convert(number, chunk_index, total_chunks, converted_text,flag){
   
   //***********     VALIDACIÓN Y SANITIZACIÓN DE FORMATO *******************
   if(this.isValidFormat(number)){
@@ -177,9 +177,18 @@ function convert(number, chunk_index, total_chunks, converted_text){
   }
   
   //Definimos si es necesario agregar postfijo al texto resultante que se aplicaron las reglas.
-  if(chunk_block > 0){
-    text += addPostfix(chunk_block, chunk_number, chunk_index) + ' ';
+  if(chunk_block > 0 || flag === 1){
+    text += addPostfix(chunk_block, chunk_number, chunk_index,flag) + ' ';
+    flag=0;
+    
+    //Si el numero siguiente es mil [postfijo] entra acá y la próxima vez tendrá el postfijo plural
+    //aún si es 0
+    if(chunk_block*3 >= 9 && chunk_block*3 % 3 == 0 && chunk_block*3 % 2 != 0 && chunk_number>0){
+      flag=1;
+    }
   }
+  
+  
   
   //************   RECURSIVIDAD **********************
   //Consultamos si la función recursiva debe terminar de invocarse
@@ -187,6 +196,6 @@ function convert(number, chunk_index, total_chunks, converted_text){
     return text.trim();
   }
   else{
-    return this.convert(number, chunk_index, total_chunks, text);
+    return this.convert(number, chunk_index, total_chunks, text, flag);
   }
 }

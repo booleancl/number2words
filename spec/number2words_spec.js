@@ -314,8 +314,9 @@ function libDescription(){
     it('11. Debería convertir números de ocho palabras', spec11);
     
     function spec11(){
-      possitiveAssertionsArr = [1220001031];
-      expectationsArr = ['mil doscientos veinte millones mil treinta y uno'];
+      possitiveAssertionsArr = [1220001031,3629001125];
+      expectationsArr = ['mil doscientos veinte millones mil treinta y uno',
+      'tres mil seiscientos veintinueve millones mil ciento veinticinco'];
       runningArrayExpectations(expectationsArr, possitiveAssertionsArr);
     }
   }
@@ -354,8 +355,8 @@ function libDescription(){
     it('Debería convertir números del 1.000.000.000.000.000.000 al 30.000.000.000.000.000.000 de dos palabras', spec1);
 
     function spec1(){
-      possitiveAssertionsArr = [5000000000000000000, 12000000000000000000];
-      expectationsArr = ['cinco trillones', 'doce trillones'];
+      possitiveAssertionsArr = [5000000000000000000, 12000000000000000000,921121000000000000000];
+      expectationsArr = ['cinco trillones', 'doce trillones','novecientos veintiún trillones ciento veintiún mil billones'];
 
       runningArrayExpectations(expectationsArr, possitiveAssertionsArr);
     }
