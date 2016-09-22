@@ -25,7 +25,7 @@ Requirements:
 ## to do features:
 - Adding coverage istanbul report and code-climate coverage badge &#10003;
 [https://goo.gl/fRwCAy](https://goo.gl/fRwCAy), [https://goo.gl/fKjMU2](https://goo.gl/fKjMU2)
-- Adding support for your language ([understand the algorithm idea]((docs/idea.md)))
+- Adding support for your language ([understand the algorithm idea](docs/idea.md)
 - Languages exportable module for global configuration.
 - Adding more gramatically corner-cases for the test suite.
 - Adding a more solid testing suite.
