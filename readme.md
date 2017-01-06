@@ -25,11 +25,10 @@ Requirements:
 ## to do features:
 - Adding coverage istanbul report and code-climate coverage badge &#10003;
 [https://goo.gl/fRwCAy](https://goo.gl/fRwCAy), [https://goo.gl/fKjMU2](https://goo.gl/fKjMU2)
-- Adding support for your language ([understand the algorithm idea]())
+- Adding support for your language ([understand the algorithm idea](docs/idea.md) )
 - Languages exportable module for global configuration.
 - Adding more gramatically corner-cases for the test suite.
 - Adding a more solid testing suite.
-- Add nodeinspector
 - Improve readbility and [ciclomatic complexity](http://damienlepage.com/cyclomatic-complexity/)
 - Create a Dockerfile for work using the ES6 Syntax
 - Use es6 for development
