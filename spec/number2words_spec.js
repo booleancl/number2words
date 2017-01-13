@@ -321,7 +321,7 @@ function libDescription(){
     }
   }
 
-  describe('Números del 1.000.000.000.000 al 999.999.999.999.999', description8);
+  describe('Números del 1.000.000.000.000 al 999.999.999.999.999.999', description8);
   
   function description8(){
 
@@ -337,13 +337,32 @@ function libDescription(){
       runningArrayExpectations(expectationsArr, positiveAssertionsArr);
     }
 
-    it('1. Debería convertir números del 31.000.000.000.000 al 99.000.000.000.000 de tres palabras', spec2);
+    it('2. Debería convertir números del 31.000.000.000.000 al 99.000.000.000.000 de tres palabras', spec2);
 
     function spec2(){
       positiveAssertionsArr = [31000000000000, 55000000000000, 99000000000000];
-      expectationsArr = ['treinta y un billones', 'cincuenta y cinco billones', 'noventa y nueve billones'];
+      expectationsArr = ['treinta y un billones','cincuenta y cinco billones', 'noventa y nueve billones'];
 
       runningArrayExpectations(expectationsArr, positiveAssertionsArr);
+    }
+  
+
+    it('9. Debería convertir números de 15 palabras o más.', spec9);
+
+    function spec9(){
+      positiveAssertionsArr = [1212121212121, 21212121212121, 31999999999999, 958987654321987, 1121212121212121, 21212121212121212, 
+      958987654321987654,958987654321123456];
+      expectationsArr = ['un billón doscientos doce mil ciento veintiún millones doscientos doce mil ciento veintiuno',
+      'veintiún billones doscientos doce mil ciento veintiún millones doscientos doce mil ciento veintiuno',
+      'treinta y un billones novecientos noventa y nueve mil novecientos noventa y nueve millones novecientos noventa y nueve mil novecientos noventa y nueve',
+      'novecientos cincuenta y ocho billones novecientos ochenta y siete mil seiscientos cincuenta y cuatro millones trescientos veintiún mil novecientos ochenta y siete',
+      'mil ciento veintiún billones doscientos doce mil ciento veintiún millones doscientos doce mil ciento veintiuno',
+      'veintiún mil doscientos doce billones ciento veintiún mil doscientos doce millones ciento veintiún mil doscientos doce',
+      'novecientos cincuenta y ocho mil novecientos ochenta y siete billones seiscientos cincuenta y cuatro mil trescientos veintiún millones novecientos ochenta y siete mil seiscientos cincuenta y cuatro',
+      'novecientos cincuenta y ocho mil novecientos ochenta y siete billones seiscientos cincuenta y cuatro mil trescientos veintiún millones ciento veintitres mil cuatrocientos cincuenta y seis'
+      ];
+
+      runningArrayExpectations(expectationsArr,positiveAssertionsArr);
     }
 
   }
@@ -357,6 +376,21 @@ function libDescription(){
     function spec1(){
       positiveAssertionsArr = [5000000000000000000, 12000000000000000000,921121000000000000000];
       expectationsArr = ['cinco trillones', 'doce trillones','novecientos veintiún trillones ciento veintiún mil billones'];
+
+      runningArrayExpectations(expectationsArr, positiveAssertionsArr);
+    }
+
+  }
+
+  describe('Números del 10^24 al 10^27.', description10);
+
+  function description10(){
+
+    it('Debería convertir números del 10^24 de dos palabras.', spec1);
+
+    function spec1(){
+      positiveAssertionsArr = [1000000000000000000000000, 5000000000000000000000000, 21000000000000000000000000];
+      expectationsArr = ['un cuatrillón', 'cinco cuatrillones', 'veintiún cuatrillones'];
 
       runningArrayExpectations(expectationsArr, positiveAssertionsArr);
     }
