@@ -350,8 +350,8 @@ function libDescription(){
     it('9. Debería convertir números de 15 palabras o más.', spec9);
 
     function spec9(){
-      positiveAssertionsArr = [1212121212121, 21212121212121, 31999999999999, 958987654321987, 1121212121212121, 21212121212121212, 
-      958987654321987654,958987654321123456];
+      positiveAssertionsArr = [1212121212121, 21212121212121, 31999999999999, 958987654321987, 1121212121212121, '21212121212121212', 
+      '958987654321987654', '958987654321123456'];
       expectationsArr = ['un billón doscientos doce mil ciento veintiún millones doscientos doce mil ciento veintiuno',
       'veintiún billones doscientos doce mil ciento veintiún millones doscientos doce mil ciento veintiuno',
       'treinta y un billones novecientos noventa y nueve mil novecientos noventa y nueve millones novecientos noventa y nueve mil novecientos noventa y nueve',
@@ -359,7 +359,7 @@ function libDescription(){
       'mil ciento veintiún billones doscientos doce mil ciento veintiún millones doscientos doce mil ciento veintiuno',
       'veintiún mil doscientos doce billones ciento veintiún mil doscientos doce millones ciento veintiún mil doscientos doce',
       'novecientos cincuenta y ocho mil novecientos ochenta y siete billones seiscientos cincuenta y cuatro mil trescientos veintiún millones novecientos ochenta y siete mil seiscientos cincuenta y cuatro',
-      'novecientos cincuenta y ocho mil novecientos ochenta y siete billones seiscientos cincuenta y cuatro mil trescientos veintiún millones ciento veintitres mil cuatrocientos cincuenta y seis'
+      'novecientos cincuenta y ocho mil novecientos ochenta y siete billones seiscientos cincuenta y cuatro mil trescientos veintiún millones ciento veintitrés mil cuatrocientos cincuenta y seis'
       ];
 
       runningArrayExpectations(expectationsArr,positiveAssertionsArr);
@@ -389,7 +389,7 @@ function libDescription(){
     it('Debería convertir números del 10^24 de dos palabras.', spec1);
 
     function spec1(){
-      positiveAssertionsArr = [1000000000000000000000000, 5000000000000000000000000, 21000000000000000000000000];
+      positiveAssertionsArr = ['1000000000000000000000000', '5000000000000000000000000', '21000000000000000000000000'];
       expectationsArr = ['un cuatrillón', 'cinco cuatrillones', 'veintiún cuatrillones'];
 
       runningArrayExpectations(expectationsArr, positiveAssertionsArr);

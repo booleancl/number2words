@@ -103,58 +103,58 @@ function addPostfix(chunk_block, chunk_number, chunk_index, flag){
   }
   return postfix_text;
 }
-//Función recursiva que realiza la conversión de número a texto
-/*********** ARGUMENTOS ******************
-  number: Input dado
-  chunk_index: Índice del chunk analizado
-  total_chunks: Total de los chunks a analizar. Se pasa como argumento para evitar recalcular este valor en las futuras iteraciones
-  converted_text: texto parcial calculado
-  flag: advierte que el proximo postfijo será "mil" para aplicarlo en números > 1 millón
-*/
-function convert(number, chunk_index, total_chunks, converted_text, flag){
-  //**********      VARIABLES INICIALES  ********************************
-  var chunk_regex = /\d{1,3}(?=(\d{3})*$)/g, //http://goo.gl/oxhsya
-      text = converted_text || '',
-      chunk,
-      chunk_number,
-      chunk_block;
-  //***********     VALIDACIÓN Y SANITIZACIÓN DE FORMATO *******************
-  if(this.isValidFormat(number)){
-    number = (number + '').replace(/\./g,'');
-  }
-  number += '';
-  //**********       INICIALIZACIONES  **********************
-  total_chunks = total_chunks || Math.ceil(number.length/3);
-  chunk_index = chunk_index || 0;
-  //Tomamos el match correspondiente al índice que la función recursiva está analizando. 
-  //Aprovechamos de aplicar el operador ++. Este operador es un shortcut para aplicar la operación ++ en la línea siguiente.
-  //más información acá --> https://goo.gl/KD687e
-  chunk = (number).match(chunk_regex)[chunk_index++];
-  chunk_number = parseInt(chunk, 10);
-  //Calculamos el bloque correspondiente al exponente del número.
-  chunk_block = total_chunks - chunk_index;
-  //************   LÓGICA DE CONVERSIÓN **********************
-  //Le aplicamos al chunk analizado las reglas ortográficas
-  if(!(chunk_block > 0 && chunk_number === 0) && !(chunk_block % 2 !== 0 && chunk_number === 1)){
-    text += this.rules(chunk, chunk_index, total_chunks, chunk_block) + ' ';
-  }
-  //Definimos si es necesario agregar postfijo al texto resultante que se aplicaron las reglas.
-  if(chunk_block > 0 || flag === 1){
-    text += addPostfix(chunk_block, chunk_number, chunk_index,flag) + ' ';
-    flag = 0;
-    //Si el siguiente número postfijo es "mil", entra esta y en la proxima iteración de la recursión, este tendrá el postfijo plural
-    //(inclusive si es 0)
-    if(chunk_block > 3 && chunk_block * 3 % 3 === 0 && chunk_block * 3 % 2 !== 0 && chunk_number > 0){
-      flag = true;
-    }
-  }
-  //************   RECURSIVIDAD **********************
-  //Consultamos si la función recursiva debe terminar de invocarse
-  if(chunk_index === total_chunks){
-    return text.trim();
-  }
-  else{
-    return this.convert(number, chunk_index, total_chunks, text, flag);
-  }
-}
-module.exports = ConverterToWords;
+      //Función recursiva que realiza la conversión de número a texto
+      /*********** ARGUMENTOS ******************
+        number: Input dado
+        chunk_index: Índice del chunk analizado
+        total_chunks: Total de los chunks a analizar. Se pasa como argumento para evitar recalcular este valor en las futuras iteraciones
+        converted_text: texto parcial calculado
+        flag: advierte que el proximo postfijo será "mil" para aplicarlo en números > 1 millón
+      */
+      function convert(number, chunk_index, total_chunks, converted_text, flag){
+        //**********      VARIABLES INICIALES  ********************************
+        var chunk_regex = /\d{1,3}(?=(\d{3})*$)/g, //http://goo.gl/oxhsya
+            text = converted_text || '',
+            chunk,
+            chunk_number,
+            chunk_block;
+        //***********     VALIDACIÓN Y SANITIZACIÓN DE FORMATO *******************
+        if(this.isValidFormat(number)){
+          number = (number + '').replace(/\./g,'');
+        }
+        number += '';
+        //**********       INICIALIZACIONES  **********************
+        total_chunks = total_chunks || Math.ceil(number.length/3);
+        chunk_index = chunk_index || 0;
+        //Tomamos el match correspondiente al índice que la función recursiva está analizando. 
+        //Aprovechamos de aplicar el operador ++. Este operador es un shortcut para aplicar la operación ++ en la línea siguiente.
+        //más información acá --> https://goo.gl/KD687e
+        chunk = (number).match(chunk_regex)[chunk_index++];
+        chunk_number = parseInt(chunk, 10);
+        //Calculamos el bloque correspondiente al exponente del número.
+        chunk_block = total_chunks - chunk_index;
+        //************   LÓGICA DE CONVERSIÓN **********************
+        //Le aplicamos al chunk analizado las reglas ortográficas
+        if(!(chunk_block > 0 && chunk_number === 0) && !(chunk_block % 2 !== 0 && chunk_number === 1)){
+          text += this.rules(chunk, chunk_index, total_chunks, chunk_block) + ' ';
+        }
+        //Definimos si es necesario agregar postfijo al texto resultante que se aplicaron las reglas.
+        if(chunk_block > 0 || flag === 1){
+          text += addPostfix(chunk_block, chunk_number, chunk_index,flag) + ' ';
+          flag = 0;
+          //Si el siguiente número postfijo es "mil", entra esta y en la proxima iteración de la recursión, este tendrá el postfijo plural
+          //(inclusive si es 0)
+          if(chunk_block > 3 && chunk_block * 3 % 3 === 0 && chunk_block * 3 % 2 !== 0 && chunk_number > 0){
+            flag = true;
+          }
+        }
+        //************   RECURSIVIDAD **********************
+        //Consultamos si la función recursiva debe terminar de invocarse
+        if(chunk_index === total_chunks){
+          return text.trim();
+        }
+        else{
+          return this.convert(number, chunk_index, total_chunks, text, flag);
+        }
+      }
+      module.exports = ConverterToWords;
